@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-ponentes{% endblock %}
+
+{% block body %}
+    <section>
+    <div id="sec2">
+        <div class="container">
+            <div class="col-xs-12 nopd">
+                <h1>{{ page.title }}</h1>
+                <div class="row">
+                {% for ponente in page.ponentes.all %}
+                <div class="col-md-4 col-xs-12">
+                {% image ponente.imagen width-200 class="img img-responsive img-circle center-block" %}
+                    <h3>{{ ponente.nombre }}</h3>
+                    {{ ponente.biografia | richtext }}
+                    {{ ponente.descripcion| richtext }}
+                    <p> <a href="{{ ponente.mas_info}}">Más información</a></p>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div id="sec3">
+            <h1 >Dinamizador de la mesa</h1>
+            <div class="row">
+            {% with mesa=page.coordinador.first %}
+                {% image mesa.imagen width-200 class="img img-responsive img-circle center-block" %}
+            <div class="col-md-4 col-md-offset-4 col-xs-12">
+                    <h3 class="text-center">{{ mesa.nombre }}</h3>
+                    {{ mesa.biografia | richtext }}
+                    {{ mesa.descripcion| richtext }}
+                    <p> <a href="{{ mesa.mas_info}}">Más información</a></p>
+            </div>
+            {% endwith %}
+            </div>
+    </div>
+</section>
+
+{% endblock %}

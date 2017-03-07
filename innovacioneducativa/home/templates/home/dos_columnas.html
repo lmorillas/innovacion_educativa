@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block body %}
+    <div id="sec2">
+    <div class="container">
+    <h1>{{ page.titulo }}</h1>
+    <div class="col-md-6 col-xs-12">
+    {{page.columna1 | richtext}}
+    </div>
+    <div class="col-md-6 col-xs-12">
+    {{page.columna2 | richtext}}
+    </div>
+    </div>
+    </div>
+
+    
+{% endblock %}

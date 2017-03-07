@@ -1,5 +1,5 @@
 {% spaceless %}
-{% load  wagtailuserbar menu_tags static %}
+{% load  wagtailuserbar menu_tags static wagtailimages_tags %}
 
 {% endspaceless %}<!DOCTYPE html>
 <html lang="en">
@@ -12,20 +12,12 @@
     <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "css/mainstream-vc.css" %}" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static "favicon/apple-touch-icon-57x57.png" %}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{% static "favicon/apple-touch-icon-60x60.png" %}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static "favicon/apple-touch-icon-72x72.png" %}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static "favicon/apple-touch-icon-76x76.png" %}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static "favicon/apple-touch-icon-114x114.png" %}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static "favicon/apple-touch-icon-120x120.png" %}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static "favicon/apple-touch-icon-144x144.png" %}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static "favicon/apple-touch-icon-152x152.png" %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "favicon/apple-touch-icon-180x180.png" %}">
+    
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-32x32.png" %}" sizes="32x32">
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-194x194.png" %}" sizes="194x194 %}">
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-96x96.png" %}" sizes="96x96">
     <link rel="icon" type="image/png" href="{% static "favicon/android-chrome-192x192.png" %}" sizes="192x192">
-    <link rel="icon" type="image/png" href="{% static "favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="{% static "favicon/favicon-16x16.png" %}"   sizes="16x16">
     <link rel="manifest" href="{% static "favicon/manifest.json" %}">
     <link rel="shortcut icon" href="{% static "favicon/favicon.ico" %}">
     <meta name="msapplication-TileColor" content="#2d89ef">
@@ -46,10 +38,7 @@
 <header>
     <div id="header">
         <div class="container">
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="logo">
-                <a href="/"><img alt="PyData" src="{% static "images/logo.png" data-rjs="2"></a>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="menu">
+            <div class="col-lg-9 col-md-9 col-md-offset-3 col-sm-12 col-xs-12" id="menu">
                 <nav class="navbar">
                     <div class="container-fluid">
                         <div class="navbar-header">
@@ -75,49 +64,22 @@
 <footer>
     <div id="footer">
         <div class="container">
-            <div class="col-md-5 col-sm-12 col-xs-12 fsec footer1">
-                <h4>CODE OF CONDUCT</h4>
-                <p>
-                    PyData is dedicated to providing a harassment-free
-                    conference experience for everyone, regardless of gender,
-                    sexual orientation, gender identity and expression,
-                    disability, physical appearance, body size, race, or
-                    religion. We do not tolerate harassment of conference
-                    participants in any form. All communication should be
-                    appropriate for a professional audience including people
-                    of many different backgrounds. Sexual language and imagery
-                    is not appropriate for any conference venue, including
-                    talks. Be kind to others. Do not insult or put down other
-                    attendees. Behave professionally. Remember that harassment
-                    and sexist, racist, or exclusionary jokes are not
-                    appropriate for PyData. Attendees violating these rules
-                    may be asked to leave the conference without a refund at
-                    the sole discretion of the conference organizers. Thank
-                    you for helping make this a welcoming, friendly event
-                    for all.
-                </p>
+        <div class="row">
+            <div class="col-md-2 col-xs-12">
+                 <a href="http://www.educaixa.com"><img class="img img-responsive" src="{% static "images/educaixa.png" %}" alt="educaixa"></a>
+
             </div>
-            <div class="col-md-2 col-sm-6 col-xs-12 fsec footer2">
-                <h4>CONTACT</h4>
+            <div class="col-md-8 col-xs-12 text-center">
                 <address>
-                    <p></p>
-                    <p class="soc">
-                        {% if page.footer_email %}
-                        <a href="mailto:{{ page.footer_email }}"><i class="fa fa-envelope"></i>Email</a>
-                        {% endif %}
-                        {% if page.footer_twitter %}
-                        <a href="https://twitter.com/{{ page.footer_twitter }}/"><i class="fa fa-twitter"></i>Twitter</a>
-                        {% endif %}
-                    </p>
+                   <p>Dirección General de Innovación, Equidad y Participación<br>
+Departamento de Educación, Cultura y Deporte</p>
+
                 </address>
             </div>
-            <div class="col-md-2 col-sm-6 col-xs-12 fsec footer3">
-                <h4>ACCOUNT</h4>
+            <div class="col-md-2 col-xs-12">
+                <a href="http://www.educaragon.org"><img class="img img-responsive"  src="{% static "images/educaragon.png" %}" data-rjs="2"></a>
             </div>
-            <div class="col-md-3 col-sm-12 col-xs-12 fsec footer4">
-                <h4>The PyData Conference Series is brought to you by </h4>
-                <a href="http://numfocus.org"><img src="{% static "images/numfocus.png" data-rjs="2"></a>
-            </div>
+        </div>
         </div>
     </div>
 </footer>
@@ -126,20 +88,6 @@
 <script src="{% static "js/retina.min.js" %}"></script>
 <script src="{% static "js/jquery.sticky.js" %}"></script>
 <script src="{% static "js/jquery.stellar.js" %}"></script>
-<script>
-    jQuery(function($) {
-        $(window).stellar();
-        $("#header").sticky({topSpacing: 0});
-        $(window).bind('scroll', function(e){
-            parallaxScroll();
-        });
-        function parallaxScroll(){
-            var scrolledY = $(window).scrollTop();
-            $('.sec1x-elem.sec1x-before').css('background-position-y','+' + ((scrolledY * 0.7)) + 'px');
-            $('.sec1x-elem.sec1x-after').css('background-position-y','+' + ((scrolledY * 0.6)) + 'px');
-         }
-    });
-</script>
 {% block extra_script %}{% endblock %}
 </body>
 </html>
