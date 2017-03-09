@@ -144,6 +144,9 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "innovacioneducativa"
 
+
+SECRET_KEY = 'ADFQ7854493R2P5J46TU8NV84U2T90574CT2452457289UJMPP__:mkmjj'
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-#BASE_URL = 'http://example.com'
+#BASE_URL = 'http://localhost/main'
+

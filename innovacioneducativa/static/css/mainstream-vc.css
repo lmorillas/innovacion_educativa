@@ -1,0 +1,250 @@
+/*!
+ * Bootstrap v3.3.3 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! Fayaz S (dzkanch@gmail.com) | www.dzkanch.com */
+html {
+
+}
+body {
+  margin: 0;
+}
+html,body {font-family:'Dosis'}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dosis';
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+ a , a:hover {transition:295ms all ease}
+
+#header{
+  min-height: 20px;
+  background-color: #ffffff !important;
+  border-bottom: solid 1px #ccc;
+  z-index: 99 !important;
+}
+
+#menu .navbar-collapse ul ul  { z-index:999}
+
+#menu {
+    padding: 3px;
+}
+#menu .navbar-collapse , #menu .container-fluid {padding:0px;}
+#menu .navbar-nav {float:right;padding:2px 0px}
+#menu .navbar {margin:0px !important}
+#menu .navbar-nav li:hover ul  {
+      max-height:1000px;
+    -webkit-transform:perspective(400) rotate3d(0,0,0,0);
+
+}
+#menu .navbar-collapse .caret {margin:-8px 0px 0px 0px}
+#menu .navbar-collapse  li   a {
+  font-family: 'Dosis';
+  font-size: 22px;
+  font-weight: normal;
+  font-style: normal;
+  background:none !important;
+  font-stretch: normal;
+  letter-spacing: 0.9px;
+  color: #0274a4;
+  text-transform: uppercase;
+  }
+
+
+#menu .navbar-collapse  li    li a {
+  font-size: 18px;
+  font-weight: normal;
+  min-width: 260px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.44;
+  color: #0274a4;
+  padding: 13px 15px;
+}
+
+#menu .navbar-collapse  li    li a:hover  {
+  color: #ffffff; background-color:#0274a4 !important
+}
+
+
+@media (min-width:800px) {
+  #menu .hero-btn {
+  min-width: 180px;
+  /* height: 54px; */
+  border: solid 7px #2ee6b6;
+  padding: 8px;
+  text-align: center !important;
+  margin-left: 10px;
+  }
+  #menu .navbar-collapse ul ul {border-top: solid 3px #0274a4;padding: 0px;z-index: 1;max-height:0;overflow:hidden;-webkit-transform:perspective(400) rotate3d(1,0,0,-90deg);-webkit-transform-origin:50% 0;-webkit-transition:350ms;-moz-transition:350ms;-o-transition:350ms;transition:350ms;display:block}
+#menu .hero-btn:hover { background:#2ee6b6 !important;color:#FFF !important}
+}
+
+#encabezado h1 {
+  font-family:'Dosis';
+  font-size: 64px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2.7px;
+  color: #f7802f;
+  text-align: center;
+}
+
+#encabezado h3 {
+  font-family:'Dosis';
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2.7px;
+  color: #f7802f;
+  text-align: center;
+}
+
+.sec1 {margin-top: 40px;}
+
+#sec2 {background-color: #2ee8b7; width: 100%; padding: 20px 0; }
+
+.sec2 {text-align:center}
+
+#sec2 h2 {  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2px; margin-top:30px;
+  text-align: center;
+  color: #ffffff;
+}
+#sec2 h1 {
+  font-size: 80px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+#sec1,#sec2,#sec3 p, li  {
+  font-family: 'Open Sans';
+  font-size: 23px;
+  color: #595f73;
+  
+}
+
+.bgcx {
+   background-color: #12ccea;
+   padding: 50px 0px;
+   text-align: center;
+}
+
+#sec3 {
+   background-color: #12ccea;
+   padding: 50px 0px;
+}
+
+#sec3  h2 {
+  font-family: 'Dosis';
+  font-size: 44px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 0px;
+}
+
+#sec3 h1 {
+  font-family: 'Dosis';
+  font-size: 60px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+  }
+
+ 
+#footer { background-color: #595f73; padding: 20px  0;}
+#footer h4 {
+  font-family: 'Dosis';
+  font-size: 22px;
+  margin-bottom:20px;
+  font-weight: normal;
+  text-transform:uppercase;
+  font-style: normal;
+  font-stretch: normal;
+  color: #12ccea;
+}
+#footer p {  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  color: #ffffff;
+}
+#footer .footer1 {
+    padding-left: 0px !important;
+}
+
+.center {
+  text-aling: center;
+}
+.nopd {padding:0px !important}
+
+#footer p {margin-bottom:30px}
+#footer ul {list-style-type:none;margig:0px;padding:0px}
+#footer ul li {}
+#footer ul li a {  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.57;
+  color: #ffffff;
+}
+
+  @media (max-width:800px) {
+#logo {padding: 5px 10px 0px 15px !important;}
+.navbar-header button {background-color:#12ccea;position:absolute;top:-65px;right: -5px;}
+.navbar-toggle .icon-bar {border:1px solid #FFF;}
+  .navbar {min-height:0px;margin: 0px;width: 100%;border-bottom: none;}
+  #menu ul{float:none;width:100%;padding: 0px 0px !important;margin: 0px;}
+    #header .container {padding:0px}
+    #menu ul li {
+     padding:1px 10px;
+    }
+    #menu ul li a {border-bottom:1px solid #ccc;text-align:center;display:block;}
+    #menu ul li:last-child a {border:none}
+  body #sec1 .sec1x {padding-top:0px !important;overflow: hidden;}
+  #sec2 h1 {font-size:71px;margin-bottom: 40px;}
+  
+  .sp-logo-cs h2 {font-size:47px}
+  .sp-logo-cs .sp {text-align:center !important;display: block;}
+  .btn.btn1, .btn.btn2, .btn.btn3, .btn.btn4, .btn.btn6 {width:95%;padding-left:0px;padding-right:0px;min-width: 260px;}
+#nst-con {overflow:hidden}
+#sec3 {width: 100%;display:block;padding-bottom: 0px;}
+#sec3 .container {display:block}
+  img {max-width:100% !important}
+  #footer .fsec {width:100%;text-align:center;padding: 0px !important;}
+  #nst-con .vcs:before , #nst-con .vcs:after ,#sec1 .sec1x:after , #sec1 .sec1x:before {display:none}
+   img {max-width:100% !important}
+  .sec2 #mono2 {left:5%;margin:0px auto;}
+  .news-xl h1 {font-size:33px}
+  .news-xl {margin-bottom: 30px;border-bottom: 1px solid #ccc;}
+  #subscibe h2 {margin-top:20px;font-size:31px}
+  #subscibe {padding-bottom:20px}
+  #subscibe form input {padding:0px  10px!important}
+  #subscibe form .sm-smb {position:relative;width:100%}
+#menu {padding:0px}
+  }
+   

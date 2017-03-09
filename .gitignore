@@ -16,4 +16,6 @@ secrets.py
 deploy/authorized_keys
 public/
 build
-
+tmp
+*.sock
+*.pid
