@@ -11,12 +11,14 @@
                 <div class="row">
                 {% for taller in page.talleres.all %}
                 <div class="col-md-4 col-xs-12">
+                <div class="thumbnail" style="padding: 5;">
                 {% image taller.imagen width-200 class="img img-responsive img-circle center-block" %}
                     <p><strong>{{ taller.nombre }}</strong></p>
 
                     {{ taller.coordinador | richtext }}
                     {{ taller.descripcion | richtext}}
                     <p> <a href="#">Más información</a></p>
+                    </div>
                 </div>
                 {% endfor %}
                 </div>
