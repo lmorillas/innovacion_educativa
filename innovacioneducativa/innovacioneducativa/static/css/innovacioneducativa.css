@@ -1,0 +1,175 @@
+html,body {font-family:'Dosis'}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dosis';
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+ a , a:hover {transition:295ms all ease}
+
+ #header{
+  min-height: 20px;
+  background-color: #1A535C !important;
+  border-bottom: solid 1px #ccc;
+  z-index: 99 !important;
+  color: #ffffff;
+}
+
+#menu .navbar-collapse ul ul  { z-index:999}
+
+#menu {
+    padding: 3px;
+}
+#menu .navbar-collapse , #menu .container-fluid {padding:0px;}
+#menu .navbar-nav {float:right;padding:2px 0px}
+#menu .navbar {margin:0px !important}
+#menu .navbar-nav li:hover ul  {
+      max-height:1000px;
+    -webkit-transform:perspective(400) rotate3d(0,0,0,0);
+
+}
+#menu .navbar-collapse .caret {margin:-8px 0px 0px 0px}
+#menu .navbar-collapse  li   a {
+  font-family: 'Dosis';
+  font-size: 22px;
+  font-weight: normal;
+  font-style: normal;
+  background:none !important;
+  font-stretch: normal;
+  letter-spacing: 0.9px;
+  color: #ffffff;
+  text-transform: uppercase;
+  }
+
+
+#menu .navbar-collapse  li    li a {
+  font-size: 18px;
+  font-weight: normal;
+  min-width: 260px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.44;
+  color: #ffffff;
+  padding: 13px 15px;
+}
+
+#menu .navbar-collapse  li    li a:hover  {
+  color: #ffffff; background-color:#ffffff !important
+}
+
+#encabezado h1 {
+  font-family:'Dosis';
+  font-size: 70px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2.7px;
+  color: #1A535C;
+  text-align: center;
+  padding-top: 80px;
+  }
+
+#encabezado h3 {
+  font-family:'Dosis';
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  color: #1A535C;
+  text-align: center;
+}
+
+#encabezado .fecha {
+	float: right;
+	background: #FF6B6B;
+	color: #ffffff;
+	padding: 40px 10px;
+	-webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 4px solid #ffffff;
+    -webkit-transform: rotate(20deg); 
+    -moz-transform: rotate(20deg); 
+    -ms-transform: rotate(20deg); 
+    -o-transform: rotate(20deg); 
+    transform: rotate(20deg);
+
+}
+
+.presentacion {
+	padding: 30px;
+	font-size: 16px;
+
+}
+
+#footer { 
+	background-color: #FF6B6B; 
+	padding: 20px  0;
+	color: #ffffff;
+}
+
+#footer a {
+	color: #ffffff;
+}
+
+
+
+.horario {
+    -webkit-box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    margin-bottom: 30px;
+}
+
+.titulo {
+	color: #ffffff;
+	background-color: #1A535C;
+
+}
+
+.horario .titulo {
+	text-align: center;
+}
+.horario .contenido {
+	padding: 10px;
+}
+h1 {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.taller .titulo {
+	min-height:60px;
+}
+
+
+.fa1 {
+	color: #4ECDC4;
+}
+
+.fa2 {
+	color: #ff6b6b;
+}
+
+.fa3 {
+	color: #1A535C;
+}
+
+.comunicaciones {
+	font-size: 18px;
+}
+
+.comunicaciones	.fa {
+	font-size: 8em;
+	color: #4ECDC4;
+}
+
+.contacto	.fa {
+	font-size: 8em;
+	color: #4ECDC4;
+}

@@ -182,7 +182,7 @@ Talleres.content_panels = Page.content_panels + [
 class Comunicaciones(Page):
     body = RichTextField(blank=True)
 
-    template = 'generica.html'
+    template = 'comunicaciones.html'
     
 Comunicaciones.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),
@@ -190,7 +190,7 @@ Comunicaciones.content_panels = Page.content_panels + [
 
 class Contacto(Page):
     body = RichTextField(blank=True)
-    template = 'generica.html'
+    template = 'contacto.html'
     
 Contacto.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),

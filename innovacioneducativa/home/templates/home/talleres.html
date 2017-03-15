@@ -4,21 +4,24 @@
 
 {% block body %}
     <section>
-    <div id="sec2">
+    <div class="talleres">
         <div class="container">
-            <div class="col-xs-12 nopd">
+            <div class="col-xs-12">
                 <h1>{{ page.title }}</h1>
                 <div class="row">
                 {% for taller in page.talleres.all %}
-                <div class="col-md-4 col-xs-12">
-                <div class="thumbnail" style="padding: 5;">
+                <div class="col-md-4 col-xs-12 taller">
+                <div class="horario">
+                <div class="titulo">
                 {% image taller.imagen width-200 class="img img-responsive img-circle center-block" %}
-                    <p><strong>{{ taller.nombre }}</strong></p>
-
-                    {{ taller.coordinador | richtext }}
+                    <h3>{{ taller.nombre }}</h3>
+                    </div>
+                    <div class="contenido">
+                    <strong>{{ taller.coordinador | richtext }}</strong>
                     {{ taller.descripcion | richtext}}
                     <p> <a href="#">Más información</a></p>
                     </div>
+                </div>
                 </div>
                 {% endfor %}
                 </div>

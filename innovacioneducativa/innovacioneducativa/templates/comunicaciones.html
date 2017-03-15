@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-comunicaciones{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container comunicaciones">
+                <h1>{{ page.title }}</h1>
+                <div class="col-xs-12 col-md-2"><i class="fa fa-podcast center-block"></i>
+                </div>
+
+                <div class="col-xs-12 col-md-8">
+{{page.body|richtext}}
+                       </div>
+                       </div>
+
+</section>
+
+{% endblock %}
