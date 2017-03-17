@@ -149,13 +149,7 @@ class Encabezado_y_Pie(models.Model):
 class Taller(Orderable):
     page = ParentalKey('Talleres', related_name='talleres')
     nombre = models.CharField("Nombre del taller", max_length=255)
-    imagen = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    imagen = models.CharField("Imagen", max_length=255, blank=True, null=True)
     coordinador = RichTextField(blank=True)
     biografia = RichTextField(blank=True)
     descripcion = RichTextField(blank=True)
@@ -163,11 +157,10 @@ class Taller(Orderable):
 
     panels = [
         FieldPanel('nombre'),
+        FieldPanel('imagen'),
         FieldPanel('coordinador'),
         FieldPanel('descripcion'),
         FieldPanel('mas_info'),
-
-        ImageChooserPanel('imagen'),
     ]
 
 class Talleres(Page):
