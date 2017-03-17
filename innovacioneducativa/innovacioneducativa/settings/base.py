@@ -28,6 +28,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'inscripciones',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -44,8 +45,10 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'crispy_forms',
 
     'django.contrib.admin',
+    #'registration', #should be immediately above 'django.contrib.auth'
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -150,3 +153,10 @@ SECRET_KEY = 'ADFQ7854493R2P5J46TU8NV84U2T90574CT2452457289UJMPP__:mkmjj'
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 #BASE_URL = 'http://localhost/main'
 
+
+ACCOUNT_ACTIVATION_DAYS = 5
+#REGISTRATION_AUTO_LOGIN = True 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+AUTH_USER_MODEL = 'inscripciones.Participante'
