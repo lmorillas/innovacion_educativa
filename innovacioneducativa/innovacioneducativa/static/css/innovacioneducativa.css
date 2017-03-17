@@ -10,7 +10,7 @@ html,body {font-family:'Dosis'}
 
  #header{
   min-height: 20px;
-  background-color: #1A535C !important;
+  background-color: #0097A7 !important;
   border-bottom: solid 1px #ccc;
   z-index: 99 !important;
   color: #ffffff;
@@ -65,7 +65,7 @@ html,body {font-family:'Dosis'}
   font-style: normal;
   font-stretch: normal;
   letter-spacing: 2.7px;
-  color: #1A535C;
+  color: #0097A7;
   text-align: center;
   padding-top: 80px;
   }
@@ -76,13 +76,13 @@ html,body {font-family:'Dosis'}
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  color: #1A535C;
+  color: #0097A7;
   text-align: center;
 }
 
 #encabezado .fecha {
 	float: right;
-	background: #FF6B6B;
+	background: #FFC107;
 	color: #ffffff;
 	padding: 40px 10px;
 	-webkit-border-radius: 100%;
@@ -104,13 +104,13 @@ html,body {font-family:'Dosis'}
 }
 
 #footer { 
-	background-color: #FF6B6B; 
+	background-color: #FFC107; 
 	padding: 20px  0;
-	color: #ffffff;
+	color: #000000;
 }
 
 #footer a {
-	color: #ffffff;
+	color: #000000;
 }
 
 
@@ -128,7 +128,7 @@ html,body {font-family:'Dosis'}
 
 .titulo {
 	color: #ffffff;
-	background-color: #1A535C;
+	background-color: #0097A7;
 
 }
 
@@ -149,15 +149,15 @@ h1 {
 
 
 .fa1 {
-	color: #4ECDC4;
+	color: #00BCD4;
 }
 
 .fa2 {
-	color: #ff6b6b;
+	color: #0097A7;
 }
 
 .fa3 {
-	color: #1A535C;
+	color: #00BCD4;
 }
 
 .comunicaciones {
@@ -166,10 +166,10 @@ h1 {
 
 .comunicaciones	.fa {
 	font-size: 8em;
-	color: #4ECDC4;
+	color: #00BCD4;
 }
 
 .contacto	.fa {
 	font-size: 8em;
-	color: #4ECDC4;
+	color: #00BCD4;
 }
