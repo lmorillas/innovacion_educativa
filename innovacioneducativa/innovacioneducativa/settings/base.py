@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'django.contrib.admin',
-    #'registration', #should be immediately above 'django.contrib.auth'
+    'registration', #should be immediately above 'django.contrib.auth'
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
