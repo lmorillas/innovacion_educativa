@@ -160,3 +160,10 @@ ACCOUNT_ACTIVATION_DAYS = 5
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 AUTH_USER_MODEL = 'inscripciones.Participante'
+
+WAGTAIL_USER_EDIT_FORM = 'inscripciones.forms.CustomUserEditForm'
+WAGTAIL_USER_CREATION_FORM = 'inscripciones.forms.CustomUserCreationForm'
+WAGTAIL_USER_CUSTOM_FIELDS = ['situacion_laboral', 'centro_educativo', 'comunidad_autonoma',
+'taller1', 'taller2', 'taller3', 'taller4']
+
+

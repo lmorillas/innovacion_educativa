@@ -8,10 +8,12 @@ from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from inscripciones.views import selecciona_talleres
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     #url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/selecciona_talleres/$', selecciona_talleres, name='selecciona_talleres'),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     url(r'^admin/', include(wagtailadmin_urls)),

@@ -176,6 +176,8 @@ class Taller(Orderable):
 
         ImageChooserPanel('imagen'),
     ]
+    def __str__(self):
+        return self.nombre
 
 class Talleres(Page):
     body = RichTextField(blank=True)
