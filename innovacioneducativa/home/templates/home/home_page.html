@@ -2,42 +2,31 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 {% block body_class %}template-homepage{% endblock %}
 
-{% block body %}
+ {% block header%}
 {% image page.imagen_principal original as fondo %}
 
-<div id="encabezado" style="height:400px; background-position: bottom; background-image: url({{ fondo.url }});">
-    <div class="container">
-        <h1> {{page.titulo}}</h1>
-        <br> 
-        <h3> {{page.subtitulo}}</h3>
-    </div>
+<div id="encabezado" class="containerrrrr" style="background-image: url({{ fondo.url }}); repeat: no-repeat; ">
+    
+        <h1 class="animated slideInDown slow"> {{page.titulo}}</h1>
+        <h3 class="animated zoomIn slow col-xs-2 fecha">{{page.subtitulo}}</h3>
+    
 </div>
+ {% endblock %}
+
+{% block body %}
     <section>
     <div id="sec1">
         <div class="container">
-            <div class="col-xs-12 nopd sec1">
+            <div class="col-xs-12 col-md-6 presentacion">
+            
                 {{ page.presentacion }}
             </div>
-        </div>
-    </div>
-</section>
-	<section>
-    <div id="sec2">
-        <div class="container">
-            <h1>Objetivos</h1>
-                {{ page.objetivos }}
-        </div>
-    </div>
-</section>
-<section>
-    <div id="sec3">
-    <div class="row">
-            <div class="col-md-offset-4 col-md-4 col-sm-12 text-center col-xs-12 bgcx">
             
-                <h2 class="col-xs-12">Saludo de la consejera</h2>
-                {% image page.imagen_consejera width-200 as consejera%}          
-				<img src="{{ consejera.url }}" alt="Imagen Consejera" class="img img-circle">
-                {{ page.saludo_consejera }}
+            <div class="col-xs-12 col-md-6">
+            <h2 class="col-xs-12 text-center">Saludo de la consejera</h2>
+                {% image page.imagen_consejera width-100 as consejera%}          
+                <img src="{{ consejera.url }}" alt="Imagen Consejera" class="img img-circle center-block">
+                <div class="presentacion">{{ page.saludo_consejera }}</div>
             </div>
             </div>
     </div>

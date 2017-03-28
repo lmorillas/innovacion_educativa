@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Nunito|Open+Sans:300,400" rel="stylesheet">
     <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "css/mainstream-vc.css" %}" rel="stylesheet">
+    <link href="{% static "css/innovacioneducativa.css" %}" rel="stylesheet">
+     <link href="{% static "css/animate.css" %}" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-32x32.png" %}" sizes="32x32">
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-194x194.png" %}" sizes="194x194 %}">
@@ -38,8 +39,8 @@
 <header>
     <div id="header">
         <div class="container">
-            <div class="col-lg-9 col-md-9 col-md-offset-3 col-sm-12 col-xs-12" id="menu">
-                <nav class="navbar">
+            <div class="col-xs-12" id="menu">
+                <nav class="navbar-fixed navbar-fixed-top">
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -57,24 +58,35 @@
             </div>
         </div>
     </div>
+{% block header%}
+{% endblock %}
 </header>
 {% block body %}
 
 {% endblock %}
 <footer>
     <div id="footer">
-        <div class="container">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 col-xs-12">
                  <a href="http://www.educaixa.com"><img class="img img-responsive" src="{% static "images/educaixa.png" %}" alt="educaixa"></a>
 
             </div>
-            <div class="col-md-8 col-xs-12 text-center">
-                <address>
-                   <p>Dirección General de Innovación, Equidad y Participación<br>
-Departamento de Educación, Cultura y Deporte</p>
-
-                </address>
+            <div class="col-md-4 col-xs-12">
+            <p>Polícita de privacidad</p>
+            <p>Créditos</p>
+            <p>Código de conducta</p>
+            </div>
+            <div class="col-md-4 col-xs-12 social">
+                 <h4>Nuestras redes sociales</h4>
+                 <p><a href="https://twitter.com/InnovaEducAr" title="Twitter">
+                            <i class="fa fa-twitter"></i> Twitter
+                        </a>
+                </p>
+                <p>
+                 <a href="https://www.facebook.com/InnovaEducAr/" title="Facebook">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
             </div>
             <div class="col-md-2 col-xs-12">
                 <a href="http://www.educaragon.org"><img class="img img-responsive"  src="{% static "images/educaragon.png" %}" data-rjs="2"></a>
@@ -85,9 +97,6 @@ Departamento de Educación, Cultura y Deporte</p>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
-<script src="{% static "js/retina.min.js" %}"></script>
-<script src="{% static "js/jquery.sticky.js" %}"></script>
-<script src="{% static "js/jquery.stellar.js" %}"></script>
 {% block extra_script %}{% endblock %}
 </body>
 </html>

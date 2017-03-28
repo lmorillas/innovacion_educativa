@@ -5,17 +5,37 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block body %}
-    <div id="sec2">
+    
     <div class="container">
     <h1>{{ page.titulo }}</h1>
-    <div class="col-md-6 col-xs-12">
-    {{page.columna1 | richtext}}
+    <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+        <div class="horario">
+            <div class="titulo">
+            {% if page.titulocol1 %}
+            <h2>{{page.titulocol1}}</h2>
+            {% endif %}
+            </div>
+            <div class="contenido">
+            {{page.columna1 | richtext}}            
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 col-xs-12">
-    {{page.columna2 | richtext}}
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="horario">
+            <div class="titulo">
+            {% if page.titulocol2 %}
+            <h2>{{page.titulocol2}}</h2>
+            {% endif %}
+            </div>
+            <div class="contenido">
+            {{page.columna2 | richtext}}            
+            </div>
+        </div>
     </div>
     </div>
-    </div>
+
+
+
 
     
 {% endblock %}

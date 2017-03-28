@@ -150,3 +150,5 @@ SECRET_KEY = 'ADFQ7854493R2P5J46TU8NV84U2T90574CT2452457289UJMPP__:mkmjj'
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 #BASE_URL = 'http://localhost/main'
 
+ALLOWED_HOSTS = ['178.32.253.90', 'localhost']
+DEBUG = True

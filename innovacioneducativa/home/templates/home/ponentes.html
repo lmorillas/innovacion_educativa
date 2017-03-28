@@ -4,41 +4,51 @@
 
 {% block body %}
     <section>
-    <div id="sec2">
         <div class="container">
-            <div class="col-xs-12 nopd">
                 <h1>{{ page.title }}</h1>
+
                 <div class="row">
                 {% for ponente in page.ponentes.all %}
-                <div class="col-md-4 col-xs-12">
-                {% image ponente.imagen width-200 class="img img-responsive img-circle center-block" %}
-                    <h3>{{ ponente.nombre }}</h3>
-                    {{ ponente.biografia | richtext }}
-                    {{ ponente.descripcion| richtext }}
-                    <p> <a href="{{ ponente.mas_info}}">Más información</a></p>
+                <div class  ="col-md-4 col-xs-12">
+                <div class="horario">
+                    <div class="titulo"><br>
+                    {% image ponente.imagen width-80 class="img img-circle center-block" %}
+                    <h3 class="text-center">{{ ponente.nombre }}</h3>
+                    </div>
+                    <div class="contenido">
+                        <strong>{{ ponente.biografia | richtext }}</strong>
+                        {{ ponente.descripcion| richtext }}
+                        <p> <a href="{{ ponente.mas_info}}">Más información</a></p>
+                    </div>
+                    </div>
                 </div>
                 {% endfor %}
                 </div>
             </div>
-        </div>
-    </div>
 </section>
 
 <section>
-    <div id="sec3">
+<div class="container">
             <h1 >Dinamizador de la mesa</h1>
             <div class="row">
             {% with mesa=page.coordinador.first %}
-                {% image mesa.imagen width-200 class="img img-responsive img-circle center-block" %}
             <div class="col-md-4 col-md-offset-4 col-xs-12">
+            <div class="horario">
+            <div class="titulo"><br>
+                {% image mesa.imagen width-80 class="img img-circle center-block" %}
+            
                     <h3 class="text-center">{{ mesa.nombre }}</h3>
-                    {{ mesa.biografia | richtext }}
+                </div>
+                <div class="contenido">
+                <strong>{{ mesa.biografia | richtext }}</strong>
                     {{ mesa.descripcion| richtext }}
                     <p> <a href="{{ mesa.mas_info}}">Más información</a></p>
+                    </div>
+                </div>
             </div>
             {% endwith %}
             </div>
-    </div>
+        </div>
 </section>
 
 {% endblock %}
