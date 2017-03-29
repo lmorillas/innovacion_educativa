@@ -44,11 +44,10 @@
 {% endblock %}
 
  {% block header%}
-}
-}
+
 {% image page.imagen_principal original as fondo %}
 
-<div id="encabezado" class="containerrrrr" style="background-image: url({{ fondo.url }}); repeat: no-repeat; ">
+<div id="encabezado" style="background-image: url({{ fondo.url }}); repeat: no-repeat; ">
     
         <h1 class="animated slideInDown slow col-md-offset-1"> {{page.titulo}}</h1>
         <h3 class="animated zoomIn slow col-xs-2 fecha">{{page.subtitulo}}</h3>
