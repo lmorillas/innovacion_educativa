@@ -72,7 +72,7 @@ button.navbar-toggle {
 
 
  #encabezado {
-            height: 800px;
+            height: 600px;
             background: linear-gradient(rgba(0, 0, 0, 0.4), 
               rgba(0, 0, 0, 0.4)) repeat scroll 0 0%, rgba(0, 0, 0, 0) 
             url({{ fondo.url }}); repeat scroll 0 0;
@@ -88,7 +88,7 @@ button.navbar-toggle {
 
 #encabezado h1 {
   font-family:'Dosis';
-  font-size: 70px;
+  font-size: 50px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;

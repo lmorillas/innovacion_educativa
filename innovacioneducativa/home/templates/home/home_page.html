@@ -3,11 +3,12 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_head %}
-<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Norican" rel="stylesheet">
 <style>
-#encabezado h1 {
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size: 56px;
+#encabezado  h1 .amano {
+    font-family: 'Norican', cursive;
+    font-size: 60px;
+    letter-spacing: 2.5px;
 }
 
 
@@ -49,8 +50,8 @@
 
 <div id="encabezado" style="background-image: url({{ fondo.url }}); repeat: no-repeat; ">
     
-        <h1 class="animated slideInDown slow col-md-offset-1"> {{page.titulo}}</h1>
-        <h3 class="animated zoomIn slow col-xs-2 fecha">{{page.subtitulo}}</h3>
+        <h1 class="col-md-offset-1">I Congreso <span class="amano">InnovaEducAR</span></h1>
+        <h3 class="col-xs-2 fecha">{{page.subtitulo}}</h3>
     
 </div>
  {% endblock %}
