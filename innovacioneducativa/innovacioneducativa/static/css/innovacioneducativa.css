@@ -9,7 +9,7 @@
  a , a:hover {transition:295ms all ease}
 
  #header{
-  min-height: 50px;
+  min-height: 30px;
   background-color: #3563A8 !important;
   border-bottom: solid 1px #ccc;
   z-index: 999 !important;
@@ -22,7 +22,7 @@
   z-index:999}
 
 #menu {
-    padding: 3px;
+    padding: 2px;
   
 }
 
@@ -45,7 +45,7 @@ button.navbar-toggle {
 #menu .navbar-collapse .caret {margin:-8px 0px 0px 0px}
 #menu .navbar-collapse  li   a {
   font-family: 'Dosis';
-  font-size: 22px;
+  font-size: 14px;
   font-weight: normal;
   font-style: normal;
   background:none !important;
@@ -73,7 +73,7 @@ button.navbar-toggle {
 
 
  #encabezado {
-            height: 600px;
+            height: 800px;
             background: linear-gradient(rgba(0, 0, 0, 0.4), 
               rgba(0, 0, 0, 0.4)) repeat scroll 0 0%, rgba(0, 0, 0, 0) 
             url({{ fondo.url }}); repeat scroll 0 0;
@@ -95,8 +95,8 @@ button.navbar-toggle {
   font-stretch: normal;
   letter-spacing: 2.7px;
   color: #F0971E;
-  text-align: center;
-  padding-top: 200px;
+  text-align: left;
+  padding-top: 160px;
   }
 
 #encabezado h3 {

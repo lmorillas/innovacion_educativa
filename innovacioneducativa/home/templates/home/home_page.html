@@ -2,12 +2,49 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 {% block body_class %}template-homepage{% endblock %}
 
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<style>
+#encabezado h1 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 56px;
+}
+
+
+#encabezado .fecha {
+    width: 150px;
+    height: 150px;
+    float: right;
+    background: #F0971E;
+    color: #ffffff;
+    padding: 25px 10px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 4px solid #ffffff;
+    -webkit-transform: rotate(20deg); 
+    -moz-transform: rotate(20deg); 
+    -ms-transform: rotate(20deg); 
+    -o-transform: rotate(20deg); 
+    transform: rotate(20deg);
+    margin-right: 20px;
+}
+
+#sec1 {
+    padding-top: 12px;
+}
+
+</style>
+{% endblock %}
+
  {% block header%}
+}
+}
 {% image page.imagen_principal original as fondo %}
 
 <div id="encabezado" class="containerrrrr" style="background-image: url({{ fondo.url }}); repeat: no-repeat; ">
     
-        <h1 class="animated slideInDown slow"> {{page.titulo}}</h1>
+        <h1 class="animated slideInDown slow col-md-offset-1"> {{page.titulo}}</h1>
         <h3 class="animated zoomIn slow col-xs-2 fecha">{{page.subtitulo}}</h3>
     
 </div>
@@ -17,16 +54,19 @@
     <section>
     <div id="sec1">
         <div class="container">
-            <div class="col-xs-12 col-md-6 presentacion">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 presentacion col-md-offset-3 panel panel-default">
             
                 {{ page.presentacion }}
             </div>
-            
-            <div class="col-xs-12 col-md-6">
+            </div>
+            <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
             <h2 class="col-xs-12 text-center">Saludo de la consejera</h2>
                 {% image page.imagen_consejera width-100 as consejera%}          
                 <img src="{{ consejera.url }}" alt="Imagen Consejera" class="img img-circle center-block">
                 <div class="presentacion">{{ page.saludo_consejera }}</div>
+            </div>
             </div>
             </div>
     </div>
