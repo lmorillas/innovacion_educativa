@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from __future__ import absolute_import, unicode_literals
 
 from django.db import models
@@ -18,6 +20,8 @@ from modelcluster.fields import ParentalKey
 from django.utils.encoding import python_2_unicode_compatible
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+
+from .blocks import BaseStreamBlock
 
 
 
@@ -194,3 +198,41 @@ Contacto.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),
     ]
 
+
+class Generica(Page):
+    """
+    Página genérica 
+    """
+
+    introduccion = models.TextField(
+        help_text='Texto para describir la página',
+        blank=True)
+    imagen = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
+    )
+    body = StreamField(
+        BaseStreamBlock(), verbose_name="Cuerpo de la página", blank=True
+    )
+    content_panels = Page.content_panels + [
+        FieldPanel('introduccion', classname="full"),
+        StreamFieldPanel('body'),
+        ImageChooserPanel('imagen'),
+    ]
+
+
+class PaginaPresentacion(Page):
+    """
+    Página de presentacion 
+    """
+    presentacion = RichTextField(help_text='Texto presentación')
+    objetivos = RichTextField(help_text='Texto objetivos')
+
+    content_panels = Page.content_panels + [
+        FieldPanel('presentacion', classname="full"),
+        FieldPanel('objetivos', classname="full")
+        ]

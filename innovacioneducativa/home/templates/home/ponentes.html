@@ -29,17 +29,17 @@
 
 <section>
 <div class="container">
-            <h1 >Dinamizador de la mesa</h1>
+            <h1 >Dinamizador de la mesa redonda</h1>
             <div class="row">
             {% with mesa=page.coordinador.first %}
             <div class="col-md-4 col-md-offset-4 col-xs-12">
-            <div class="horario">
-            <div class="titulo"><br>
+            <div class="panel panel-default horario">
+            <div class="titulo-mesa"><br>
                 {% image mesa.imagen width-80 class="img img-circle center-block" %}
             
                     <h3 class="text-center">{{ mesa.nombre }}</h3>
                 </div>
-                <div class="contenido">
+                <div class="contenido panel-body">
                 <strong>{{ mesa.biografia | richtext }}</strong>
                     {{ mesa.descripcion| richtext }}
                     <p> <a href="{{ mesa.mas_info}}">Más información</a></p>

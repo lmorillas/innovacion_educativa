@@ -144,6 +144,12 @@ button.navbar-toggle {
 
 }
 
+.titulo-mesa {
+   color: #ffffff;
+   background-color: #BF6B1F;
+}
+
+
 .horario .titulo {
 	text-align: center;
 }
@@ -185,6 +191,10 @@ h1 {
 	font-size: 8em;
 	color: #6A8CC1;
 }
+.objetivos .fa {
+  font-size: 6em;
+  color: #6A8CC1;
+}
 
 #footer h4 {
   margin-top: 0;
@@ -223,3 +233,4 @@ h1 {
 header {
   padding-bottom: 12px;
 }
+
