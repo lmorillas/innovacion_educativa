@@ -236,3 +236,14 @@ class PaginaPresentacion(Page):
         FieldPanel('presentacion', classname="full"),
         FieldPanel('objetivos', classname="full")
         ]
+
+class PaginaInscripciones(Page):
+    """
+    Página de inscripciones 
+    """
+    contenido = RichTextField(help_text='Texto inscripciones')
+    
+
+    content_panels = Page.content_panels + [
+        FieldPanel('contenido', classname="full"),
+        ]

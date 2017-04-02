@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_head %}
+
+<style>
+.contenido {
+    font-size: 18px;
+}
+.presentacion {
+    padding-top: 40px;
+
+}
+
+</style>
+{% endblock %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block body %}
+    
+    <div class="container contenido">
+    
+    <div class="row presentacion">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="horario">
+            <div class="contenido caja_presentacion text-center">
+            {{page.contenido | richtext}}            
+            </div>
+        </div>
+        <img class="img img-responsive" src="{% static "images/experiencia1.jpg" %}" alt="experiencias educativas">
+    </div>
+    </div>
+    </div>
+    
+    
+{% endblock %}
