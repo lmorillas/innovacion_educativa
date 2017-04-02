@@ -95,7 +95,7 @@ button.navbar-toggle {
   letter-spacing: 2.7px;
   color: #F0971E;
   text-align: left;
-  padding-top: 160px;
+  padding-top: 120px;
   }
 
 #encabezado h3 {
@@ -144,9 +144,14 @@ button.navbar-toggle {
 
 }
 
+.titulo-ponente {
+   color: #ffffff;
+   background-color: #6A8CC1;
+}
+
 .titulo-mesa {
    color: #ffffff;
-   background-color: #BF6B1F;
+   background-color: #F0971E;
 }
 
 
@@ -234,3 +239,7 @@ header {
   padding-bottom: 12px;
 }
 
+.caja_presentacion {
+    background-color: #6A8CC1;
+    color: #ffffff;
+}
