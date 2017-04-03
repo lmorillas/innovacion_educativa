@@ -1,5 +1,7 @@
 {% spaceless %}
-{% load  wagtailuserbar menu_tags static wagtailimages_tags %}
+{% load  wagtailuserbar menu_tags static wagtailimages_tags compress %}
+
+
 
 {% endspaceless %}<!DOCTYPE html>
 <html lang="en">
@@ -11,10 +13,15 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Nunito|Open+Sans:300,400" rel="stylesheet">
     
      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+     {% compress css %}
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "css/innovacioneducativa.css" %}" rel="stylesheet">
-     <link href="{% static "css/animate.css" %}" rel="stylesheet">
-    
+    <link rel="stylesheet" href="{% static "scss/innovacioneducativa.scss" %}" type="text/x-sass">
+
+    <!-- <link href="{% static "css/innovacioneducativa.css" %}" rel="stylesheet"> -->
+     <!-- <link href="{% static "css/animate.css" %}" rel="stylesheet"> -->
+    {% endcompress %}
+
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-32x32.png" %}" sizes="32x32">
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-194x194.png" %}" sizes="194x194 %}">
     <link rel="icon" type="image/png" href="{% static "favicon/favicon-96x96.png" %}" sizes="96x96">

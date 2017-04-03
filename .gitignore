@@ -20,3 +20,5 @@ tmp
 *.sock
 *.pid
 old
+CACHE
+innovacioneducativa/static

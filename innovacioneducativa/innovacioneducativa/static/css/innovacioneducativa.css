@@ -243,3 +243,131 @@ header {
     background-color: #6A8CC1;
     color: #ffffff;
 }
+.presentacion {
+  padding: 30px;
+  font-size: 24px;
+}
+
+#footer {
+  background-color: #F0971E;
+  padding: 20px  0;
+  color: #000000;
+  a {
+    color: #000000;
+  }
+}
+
+.horario {
+  -webkit-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  margin-bottom: 30px;
+}
+
+.titulo {
+  color: #ffffff;
+  background-color: #3563A8;
+}
+
+.titulo-ponente {
+  color: #ffffff;
+  background-color: #6A8CC1;
+}
+
+.titulo-mesa {
+  color: #ffffff;
+  background-color: #F0971E;
+}
+
+.horario {
+  .titulo {
+    text-align: center;
+  }
+  .contenido {
+    padding: 10px;
+  }
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.taller .titulo {
+  min-height: 60px;
+}
+
+.fa1 {
+  color: #6A8CC1;
+}
+
+.fa2 {
+  color: #3563A8;
+}
+
+.fa3 {
+  color: #6A8CC1;
+}
+
+.comunicaciones {
+  font-size: 18px;
+  .fa-podcast {
+    font-size: 8em;
+    color: #6A8CC1;
+  }
+}
+
+.contacto .fa {
+  font-size: 8em;
+  color: #6A8CC1;
+}
+
+.objetivos .fa {
+  font-size: 6em;
+  color: #6A8CC1;
+}
+
+#footer h4 {
+  margin-top: 0;
+}
+
+.taller {
+  i {
+    color: #F0971E;
+    font-size: 42px;
+  }
+  .titulo {
+    min-height: 120px;
+    padding: 1px 0;
+  }
+}
+
+.btn-info {
+  background-color: #6A8CC1;
+}
+
+.modal-title {
+  color: #3563A8;
+  text-align: center;
+}
+
+.navbar-toggle .icon-bar {
+  border: 1px solid #FFF;
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+header {
+  padding-bottom: 12px;
+}
+
+.caja_presentacion {
+  background-color: #6A8CC1;
+  color: #ffffff;
+}

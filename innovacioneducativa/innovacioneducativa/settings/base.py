@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'wagtailmenus',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
 
 STATICFILES_DIRS = [
@@ -154,3 +156,8 @@ SECRET_KEY = 'ADFQ7854493R2P5J46TU8NV84U2T90574CT2452457289UJMPP__:mkmjj'
 
 ALLOWED_HOSTS = ['178.32.253.90', 'localhost']
 DEBUG = True
+
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = (
+    ('text/x-sass', 'sassc {infile} {outfile}'),
+)
