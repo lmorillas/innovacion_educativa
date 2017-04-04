@@ -162,3 +162,5 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'sassc {infile} {outfile}'),
 )
 #COMPRESS_OFFLINE = True
+#
+BASE_URL_PATH = '/'
