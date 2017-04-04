@@ -1,74 +1,108 @@
-html, body {
-  font-family: 'Dosis';
-}
+//colors
+$color_azure_approx: #3563a8;
+$color_celeste_approx: #ccc;
+$white: #ffffff;
+$black_40: rgba(0, 0, 0, 0.4);
+$color_carrot_orange_approx: #f0971e;
+$black: #000000;
+$black_20: rgba(0,0,0,0.2);
+$color_desert_storm_approx: #f8f8f8;
+$color_ship_cove_approx: #6a8cc1;
+$color_bourbon_approx: #bf6b1f;
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Dosis';
+//fonts
+$font_0: Dosis;
+
+//urls
+$url_0: url( "/media/images/exterior.original.png" );
+
+//@extend-elements
+//original selectors
+//.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
+%extend_1 {
+  font-family: $font_0;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
 
+
+html {
+  font-family: $font_0;
+}
+body {
+  font-family: $font_0;
+}
+.h1 {
+  @extend %extend_1;
+}
+.h2 {
+  @extend %extend_1;
+}
+.h3 {
+  @extend %extend_1;
+}
+.h4 {
+  @extend %extend_1;
+}
+.h5 {
+  @extend %extend_1;
+}
+.h6 {
+  @extend %extend_1;
+}
+h1 {
+  @extend %extend_1;
+  text-align: center;
+  padding-bottom: 20px;
+}
+h2 {
+  @extend %extend_1;
+}
+h3 {
+  @extend %extend_1;
+}
+h4 {
+  @extend %extend_1;
+}
+h5 {
+  @extend %extend_1;
+}
+h6 {
+  @extend %extend_1;
+}
 a {
+  //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
   transition: 295ms all ease;
   &:hover {
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
     transition: 295ms all ease;
   }
 }
-
 #header {
   min-height: 30px;
-  background-color: #3563A8 !important;
-  border-bottom: solid 1px #ccc;
+  background-color: $color_azure_approx !important;
+  border-bottom: solid 1px $color_celeste_approx;
   z-index: 999 !important;
-  color: #ffffff;
+  color: $white;
 }
-
 #menu {
-  .navbar-collapse ul ul {
-    z-index: 999;
-  }
   padding: 2px;
-}
-
-.navbar-fixed-top {
-  background-color: #3563A8 !important;
-}
-
-button.navbar-toggle {
-  color: #ffffff;
-  z-index: 99 !important;
-}
-
-#menu {
-  .navbar-collapse, .container-fluid {
-    padding: 0px;
-  }
-  .navbar-nav {
-    float: right;
-    padding: 2px 0px;
-  }
-  .navbar {
-    margin: 0px !important;
-  }
-  .navbar-nav li:hover ul {
-    max-height: 1000px;
-    -webkit-transform: perspective(400) rotate3d(0, 0, 0, 0);
-  }
   .navbar-collapse {
+    padding: 0;
     .caret {
-      margin: -8px 0px 0px 0px;
+      margin: -8px 0 0;
     }
     li {
       a {
-        font-family: 'Dosis';
+        font-family: $font_0;
         font-size: 14px;
         font-weight: normal;
         font-style: normal;
         background: none !important;
         font-stretch: normal;
         letter-spacing: 0.9px;
-        color: #ffffff;
+        color: $white;
         text-transform: uppercase;
       }
       li a {
@@ -78,90 +112,102 @@ button.navbar-toggle {
         font-style: normal;
         font-stretch: normal;
         line-height: 1.44;
-        color: #ffffff;
+        color: $white;
         padding: 13px 15px;
         &:hover {
-          color: #ffffff;
-          background-color: #ffffff !important;
+          color: $white;
+          background-color: $white !important;
         }
       }
     }
+    ul ul {
+      z-index: 999;
+    }
   }
+  .container-fluid {
+    padding: 0;
   }
-
+  .navbar-nav {
+    float: right;
+    padding: 2px 0;
+    li:hover ul {
+      max-height: 1000px;
+      //vendor-prefix found
+      //-webkit-transform: perspective(400) rotate3d(0,0,0,0)
+    }
+  }
+  .navbar {
+    margin: 0 !important;
+  }
+}
+.navbar-fixed-top {
+  background-color: $color_azure_approx !important;
+}
 #encabezado {
   height: 600px;
+  background: linear-gradient($black_40, $black_40) repeat scroll 0 0, rgba(0, 0, 0, 0) $url_0;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  //vendor-prefix found
+  //-webkit-background-size: cover
+  //vendor-prefix found
+  //-moz-background-size: cover
+  //vendor-prefix found
+  //-o-background-size: cover
   background-size: cover;
   overflow: hidden;
   h1 {
-    font-family: 'Dosis';
+    font-family: $font_0;
     font-size: 55px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     letter-spacing: 2.7px;
-    color: #F0971E;
+    color: $color_carrot_orange_approx;
     text-align: left;
-    padding-top: 120px;
+    padding-top: 160px;
   }
   h3 {
-    font-family: 'Dosis';
+    font-family: $font_0;
     font-size: 24px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
-    color: #3563A8;
+    color: $color_azure_approx;
     text-align: center;
   }
 }
-
 .presentacion {
   padding: 30px;
   font-size: 24px;
 }
-
 #footer {
-  background-color: #F0971E;
-  padding: 20px  0;
-  color: #000000;
+  background-color: $color_carrot_orange_approx;
+  padding: 20px 0;
+  color: $black;
   a {
-    color: #000000;
+    color: $black;
+  }
+  h4 {
+    margin-top: 0;
   }
 }
-
 .horario {
-  -webkit-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
+  //vendor-prefix found
+  //-webkit-box-shadow: 0 4px 0 rgba(0,0,0,0.2)
+  //vendor-prefix found
+  //-moz-box-shadow: 0 4px 0 rgba(0,0,0,0.2)
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 4px 0 $black_20;
+  //vendor-prefix found
+  //-webkit-border-radius: 8px
+  //vendor-prefix found
+  //-moz-border-radius: 8px
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 8px;
-  background-color: #f8f8f8;
+  background-color: $color_desert_storm_approx;
   margin-bottom: 30px;
-}
-
-.titulo {
-  color: #ffffff;
-  background-color: #3563A8;
-}
-
-.titulo-ponente {
-  color: #ffffff;
-  background-color: #6A8CC1;
-}
-
-.titulo-mesa {
-  color: #ffffff;
-  background-color: #F0971E;
-}
-
-.horario {
   .titulo {
     text-align: center;
   }
@@ -169,85 +215,71 @@ button.navbar-toggle {
     padding: 10px;
   }
 }
-
-h1 {
-  text-align: center;
-  padding-bottom: 20px;
+.titulo {
+  color: $white;
+  background-color: $color_azure_approx;
 }
-
-.taller .titulo {
-  min-height: 60px;
+.titulo-ponente {
+  color: $white;
+  background-color: $color_ship_cove_approx;
 }
-
-.fa1 {
-  color: #6A8CC1;
+.titulo-mesa {
+  color: $white;
+  background-color: $color_bourbon_approx;
 }
-
-.fa2 {
-  color: #3563A8;
-}
-
-.fa3 {
-  color: #6A8CC1;
-}
-
-.comunicaciones {
-  font-size: 18px;
-  .fa-podcast {
-    font-size: 8em;
-    color: #6A8CC1;
-  }
-}
-
-.contacto .fa {
-  font-size: 8em;
-  color: #6A8CC1;
-}
-
-.objetivos .fa {
-  font-size: 6em;
-  color: #6A8CC1;
-}
-
-#footer h4 {
-  margin-top: 0;
-}
-
 .taller {
-  i {
-    color: #F0971E;
-    font-size: 42px;
-  }
   .titulo {
     min-height: 120px;
     padding: 1px 0;
   }
+  i {
+    color: $color_carrot_orange_approx;
+    font-size: 42px;
+  }
 }
-
+.fa1 {
+  color: $color_ship_cove_approx;
+}
+.fa2 {
+  color: $color_azure_approx;
+}
+.fa3 {
+  color: $color_ship_cove_approx;
+}
+.comunicaciones {
+  font-size: 18px;
+  .fa {
+    font-size: 8em;
+    color: $color_ship_cove_approx;
+  }
+}
 .btn-info {
-  background-color: #6A8CC1;
+  background-color: $color_ship_cove_approx;
 }
-
 .modal-title {
-  color: #3563A8;
+  color: $color_azure_approx;
   text-align: center;
 }
-
-.navbar-toggle .icon-bar {
-  border: 1px solid #FFF;
-  display: block;
-  width: 22px;
-  height: 2px;
-  border-radius: 1px;
-}
-
 header {
   padding-bottom: 12px;
 }
-
-.caja_presentacion {
-  background-color: #6A8CC1;
-  color: #ffffff;
+button.navbar-toggle {
+  color: $white;
+  z-index: 99 !important;
 }
-
-
+.contacto .fa {
+  font-size: 8em;
+  color: $color_ship_cove_approx;
+}
+.objetivos .fa {
+  font-size: 6em;
+  color: $color_ship_cove_approx;
+}
+.navbar-toggle .icon-bar {
+  border: 1px solid $white;
+  display: block;
+  width: 22px;
+  height: 2px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 1px;
+}
