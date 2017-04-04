@@ -1,14 +1,15 @@
 //colors
-$color_azure_approx: #3563a8;
+$color1: #3563a8; 
 $color_celeste_approx: #ccc;
 $white: #ffffff;
 $black_40: rgba(0, 0, 0, 0.4);
-$color_carrot_orange_approx: #f0971e;
+$color4: #f0971e;
 $black: #000000;
 $black_20: rgba(0,0,0,0.2);
 $color_desert_storm_approx: #f8f8f8;
-$color_ship_cove_approx: #6a8cc1;
-$color_bourbon_approx: #bf6b1f;
+$color2: #6a8cc1;
+$color5: #bf6b1f;
+
 
 //fonts
 $font_0: Dosis;
@@ -81,7 +82,7 @@ a {
 }
 #header {
   min-height: 30px;
-  background-color: $color_azure_approx !important;
+  background-color: $color1 !important;
   border-bottom: solid 1px $color_celeste_approx;
   z-index: 999 !important;
   color: $white;
@@ -141,7 +142,7 @@ a {
   }
 }
 .navbar-fixed-top {
-  background-color: $color_azure_approx !important;
+  background-color: $color1 !important;
 }
 #encabezado {
   height: 600px;
@@ -164,7 +165,7 @@ a {
     font-style: normal;
     font-stretch: normal;
     letter-spacing: 2.7px;
-    color: $color_carrot_orange_approx;
+    color: $color4;
     text-align: left;
     padding-top: 160px;
   }
@@ -174,7 +175,7 @@ a {
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
-    color: $color_azure_approx;
+    color: $color1;
     text-align: center;
   }
 }
@@ -183,7 +184,7 @@ a {
   font-size: 24px;
 }
 #footer {
-  background-color: $color_carrot_orange_approx;
+  background-color: $color4;
   padding: 20px 0;
   color: $black;
   a {
@@ -217,15 +218,15 @@ a {
 }
 .titulo {
   color: $white;
-  background-color: $color_azure_approx;
+  background-color: $color1;
 }
 .titulo-ponente {
   color: $white;
-  background-color: $color_ship_cove_approx;
+  background-color: $color2;
 }
 .titulo-mesa {
   color: $white;
-  background-color: $color_bourbon_approx;
+  background-color: $color4;
 }
 .taller {
   .titulo {
@@ -233,31 +234,34 @@ a {
     padding: 1px 0;
   }
   i {
-    color: $color_carrot_orange_approx;
+    color: $color4;
     font-size: 42px;
   }
 }
 .fa1 {
-  color: $color_ship_cove_approx;
+  color: $color2;
 }
 .fa2 {
-  color: $color_azure_approx;
+  color: $color1;
 }
 .fa3 {
-  color: $color_ship_cove_approx;
+  color: $color2;
 }
 .comunicaciones {
   font-size: 18px;
-  .fa {
+  .fa-podcast {
     font-size: 8em;
-    color: $color_ship_cove_approx;
+    color: $color2;
+  }
+  h3 {
+  text-align: center;
   }
 }
 .btn-info {
-  background-color: $color_ship_cove_approx;
+  background-color: $color2;
 }
 .modal-title {
-  color: $color_azure_approx;
+  color: $color1;
   text-align: center;
 }
 header {
@@ -269,11 +273,11 @@ button.navbar-toggle {
 }
 .contacto .fa {
   font-size: 8em;
-  color: $color_ship_cove_approx;
+  color: $color2;
 }
 .objetivos .fa {
   font-size: 6em;
-  color: $color_ship_cove_approx;
+  color: $color2;
 }
 .navbar-toggle .icon-bar {
   border: 1px solid $white;

@@ -161,4 +161,4 @@ COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'sassc {infile} {outfile}'),
 )
-COMPRESS_OFFLINE = True
+#COMPRESS_OFFLINE = True
