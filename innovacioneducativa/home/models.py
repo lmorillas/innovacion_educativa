@@ -23,7 +23,7 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 from .blocks import BaseStreamBlock
 
-
+MAX_TALLER=25
 
 class HTMLBlock(StreamBlock):
     raw_html = RawHTMLBlock()
@@ -155,6 +155,7 @@ class Encabezado_y_Pie(models.Model):
 
 
 class Taller(Orderable):
+    
     page = ParentalKey('Talleres', related_name='talleres')
     nombre = models.CharField("Nombre del taller", max_length=255)
     imagen = models.CharField("Imagen", max_length=255, blank=True, null=True)
@@ -170,6 +171,10 @@ class Taller(Orderable):
         FieldPanel('descripcion'),
         FieldPanel('mas_info'),
     ]
+    def __str__(self):
+        return "{}".format(self.nombre)
+
+   
 
 
 class Talleres(Page):

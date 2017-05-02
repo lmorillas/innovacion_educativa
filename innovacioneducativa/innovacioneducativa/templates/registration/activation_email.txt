@@ -1,0 +1,11 @@
+Hola, tú (o alguien usando tu dirección de correo) ha solicitado registrarse en el I Congreso InnovaEducAR. Si no has sido tú, ignora este correo y eliminaremos tu dirección de nuestros registros. 
+
+Para completar el registro haz clic en el siguente enlace. Este enlace sólo estará activo un día. 
+
+{{ request.scheme }}://{{ request.get_host }}{% url 'registration_activate' activation_key %}
+
+
+Un saludo.
+
+El Equipo de Organización del Congreso.
+

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'registration',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,6 +57,8 @@ INSTALLED_APPS = [
 
     'wagtailmenus',
     'compressor',
+    'asistentes',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -164,3 +167,11 @@ COMPRESS_PRECOMPILERS = (
 #COMPRESS_OFFLINE = True
 #
 BASE_URL_PATH = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+PASSWORD_REQUIRED_TEMPLATE = 'innovacioneducativa/password_required.html'
+WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
+# registration
+ACCOUNT_ACTIVATION_DAYS = 1 
+REGISTRATION_AUTO_LOGIN = True 
+REGISTRATION_EMAIL_HTML = False

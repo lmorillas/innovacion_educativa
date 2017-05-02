@@ -8,6 +8,8 @@ from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from asistentes import views as asistentes_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -16,6 +18,10 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+
+    url(r'^inscripciones/activar$', asistentes_views.inscripcion, name="inscripcion"),
+    url(r'^inscripciones/gracias$', asistentes_views.gracias, name="gracias"),
+    url(r'^accounts/', include('registration.backends.default.urls')),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
