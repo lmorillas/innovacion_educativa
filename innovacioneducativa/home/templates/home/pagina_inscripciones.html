@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static congresotags %}
 
 {% block extra_head %}
 
@@ -22,12 +22,15 @@
 {% block body %}
     
     <div class="container contenido">
-    
+     
     <div class="row presentacion">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
         <div class="horario">
-            <div class="contenido caja_presentacion text-center">
+            <div class="contenido caja_presentacion text-center">  
             {{page.contenido | richtext}}            
+            </div>
+            <div class="contenido caja_presentacion text-center">  
+            <strong>{% participantes %} participantes inscritos</strong>
             </div>
         </div>
         <img class="img img-responsive" src="{% static "images/experiencia1.jpg" %}" alt="experiencias educativas">
