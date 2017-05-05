@@ -173,6 +173,8 @@ class Taller(Orderable):
     ]
     def __str__(self):
         return "{}".format(self.nombre)
+    def taller1(self):
+        pass
 
    
 

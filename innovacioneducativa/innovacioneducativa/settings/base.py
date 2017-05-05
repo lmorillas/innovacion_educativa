@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'compressor',
     'asistentes',
     'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ MIDDLEWARE = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'innovacioneducativa.urls'
@@ -175,3 +177,8 @@ WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 ACCOUNT_ACTIVATION_DAYS = 1 
 REGISTRATION_AUTO_LOGIN = True 
 REGISTRATION_EMAIL_HTML = False
+REGISTRATION_FORM = 'registration.forms.RegistrationFormUniqueEmail'
+
+AFORO_MAXIMO = 250
+TALLER_MAXIMO = 25
+ESPERA_MAXIMO = 50

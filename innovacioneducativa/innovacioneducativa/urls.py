@@ -11,6 +11,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from asistentes import views as asistentes_views
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
@@ -41,3 +42,15 @@ if settings.DEBUG:
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+
+ 
+
+# For anything not caught by a more specific rule above, hand over to
+# Wagtail's serving mechanism (must come last)
+urlpatterns += [
+    url(r'', include(wagtail_urls)),
+]

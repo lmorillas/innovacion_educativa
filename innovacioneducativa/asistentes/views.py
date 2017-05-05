@@ -6,7 +6,7 @@ from django.contrib.auth import logout
 # Create your views here.
 
 from .models import UsuarioTalleres
-from .forms import TalleresForm
+from .forms import TalleresForm, ListaDeEsperaForm
 from home.models import Taller
 from django.db.models import Count
 from django.db.models import Q
@@ -17,6 +17,8 @@ MAX_TALLER = 2
 def inscripcion(request):
 	usuario = UsuarioTalleres.objects.filter(user=request.user)
 	if request.method == 'POST':
+		if 'cancel' in request.POST:
+			redirect('home')
 		if usuario:
 			form = TalleresForm(request.POST, instance=usuario[0])
 		else:
@@ -61,18 +63,30 @@ def gracias(request, template_name='asistentes/gracias.html'):
 	return render(request, template_name, contexto)
 
 
+@login_required
+def lista_espera(request):
+	if request.method == 'POST':
+		form = Lista(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('gracias', permanent=True )
+		
+	else:
+		
+		if usuario:
+			form = TalleresForm(instance=usuario[0])
+		else:
+			form = TalleresForm(initial={'user': request.user})
+	query = Taller.objects.annotate(taller1T = Count('taller1'),
+		taller2T = Count('taller2'),
+		taller3T = Count('taller3'),
+		taller4T = Count('taller4'),
+		)
 
-def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
-    else:
-    	
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+	#q1 = Q(taller1T__lt=0 ) | Q(nombre=form.instance.taller1) if form.instance.taller else Q(taller1T__lt=1 )
+	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller1) )
+	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller2) )
+	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller3) )
+	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller4) )
+	context = {'form': form }
+	return render(request, 'asistentes/talleres.html', context)

@@ -98,6 +98,17 @@ button.navbar-toggle {
   padding-top: 120px;
   }
 
+  #encabezado h2 {
+  font-family:'Dosis';
+  font-size: 40px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  color: #F0971E;
+  text-align: left;
+  }
+
+
 #encabezado h3 {
   font-family:'Dosis';
   font-size: 24px;
