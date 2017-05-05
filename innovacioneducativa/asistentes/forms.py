@@ -38,14 +38,13 @@ class TalleresForm(forms.ModelForm):
 	helper.label_class = 'col-md-2 col-xs-12'
 	helper.field_class = 'col-md-6 col-xs-12'
 	helper.add_input(Submit('submit', 'Realizar inscripción', css_class='btn-primary'))
-	helper.add_input(Button('cancel', 'Cancelar'))
-
+	#helper.add_input(Button('cancel', 'Cancelar'))
 
 
 	class Meta:
 	    model = UsuarioTalleres
 	    widgets = {'user': forms.HiddenInput(),
-	    #'taller1': forms.ModelChoiceField(queryset=Taller.objects.all())
+	    #'comunidad_autonoma': forms.ChoiceField(choices=CA)
 	    }
 	    exclude=[]
 
