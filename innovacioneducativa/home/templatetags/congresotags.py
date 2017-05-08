@@ -11,4 +11,4 @@ def participantes():
 	'''
 	Devuelve número de asistentes que han confirmado ya el email y se han inscrito
 	'''
-    return UsuarioTalleres.objects.count()
+	return UsuarioTalleres.objects.count()

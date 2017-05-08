@@ -12,6 +12,7 @@ from asistentes import views as asistentes_views
 from django.contrib.auth import views as auth_views
 
 
+
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
@@ -27,7 +28,7 @@ urlpatterns = [
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
-    url(r'', include(wagtail_urls)),
+    #url(r'', include(wagtail_urls)),
 
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
@@ -54,3 +55,12 @@ if settings.DEBUG:
 urlpatterns += [
     url(r'', include(wagtail_urls)),
 ]
+
+from django.conf.urls import (
+    handler400, handler403, handler404, handler500
+)
+
+#handler400 = 'home.views.bad_request'
+#handler403 = 'home.views.permission_denied'
+handler404 = 'home.views.page_not_found'
+#handler500 = 'home.views.server_error'

@@ -173,10 +173,7 @@ class Taller(Orderable):
     ]
     def __str__(self):
         return "{}".format(self.nombre)
-    def taller1(self):
-        pass
-
-   
+       
 
 
 class Talleres(Page):
@@ -253,4 +250,17 @@ class PaginaInscripciones(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('contenido', classname="full"),
+        ]
+
+class Pregunta(Orderable):
+    
+    page = ParentalKey('PaginaPregunasMesa', related_name='preguntas')
+    pregunta = models.CharField("Pregunta a la mesa", max_length=255)
+    quien = models.CharField("Quién pregunta?", max_length=255)
+    validada = models.BooleanField(default=False)
+
+    panels = [
+        FieldPanel('pregunta'),
+        FieldPanel('quien'),
+        FieldPanel('validadad')
         ]

@@ -48,6 +48,9 @@
             </div>
             {% endwith %}
             </div>
+            {% if request.user and request.user.is_staff %}
+            
+            {% endif %}
         </div>
 </section>
 
