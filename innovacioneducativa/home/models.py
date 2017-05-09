@@ -301,6 +301,7 @@ class PaginaPreguntasMesa(RoutablePageMixin, Page):
 
 PaginaPreguntasMesa.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),
+    FieldPanel('gracias', classname="full"),
     InlinePanel('preguntas', label="Pregunta"),
     ]
     
