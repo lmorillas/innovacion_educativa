@@ -287,12 +287,13 @@ class PreguntaMesa(Orderable):
 
 class PaginaPreguntasMesa(RoutablePageMixin, Page):
     body = RichTextField(blank=True)
-    gracias = RichTextField(blank=True)
+    thanks = RichTextField(blank=True)
 
     def validadas(self):
         return self.preguntas.filter(validada=True)
 
     @route(r'^gracias/$')
+
     def gracias(self, request):
         context = self.get_context(request)
         context['gracias'] = 'gracias'
@@ -301,7 +302,7 @@ class PaginaPreguntasMesa(RoutablePageMixin, Page):
 
 PaginaPreguntasMesa.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),
-    FieldPanel('gracias', classname="full"),
+    FieldPanel('thanks', classname="full", verbose_name="Mensaje gracias"),
     InlinePanel('preguntas', label="Pregunta"),
     ]
     
