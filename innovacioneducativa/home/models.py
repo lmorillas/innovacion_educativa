@@ -293,7 +293,6 @@ class PaginaPreguntasMesa(RoutablePageMixin, Page):
         return self.preguntas.filter(validada=True)
 
     @route(r'^gracias/$')
-
     def gracias(self, request):
         context = self.get_context(request)
         context['gracias'] = 'gracias'
