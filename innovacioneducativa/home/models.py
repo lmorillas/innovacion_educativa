@@ -132,7 +132,7 @@ class Ponentes(Page):
             form = PreguntaMesaForm(request.POST)
             if form.is_valid():
                 pregunta = form.save()
-                
+
             return redirect('/preguntas-la-mesa-redonda/gracias')
         else:
             form = PreguntaMesaForm()
@@ -287,6 +287,7 @@ class PreguntaMesa(Orderable):
 
 class PaginaPreguntasMesa(RoutablePageMixin, Page):
     body = RichTextField(blank=True)
+    gracias = RichTextField(blank=True)
 
     def validadas(self):
         return self.preguntas.filter(validada=True)
