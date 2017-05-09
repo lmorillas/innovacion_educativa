@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags static %}
+{% load wagtailcore_tags wagtailimages_tags static crispy_forms_tags %}
+
 {% block body_class %}template-ponentes{% endblock %}
 
 {% block body %}
@@ -47,7 +48,13 @@
                 </div>
             </div>
             {% endwith %}
+             <div class="col-md-6 col-md-offset-3 col-xs-12">
+ <h3 class="text-center">¿Quieres sugerir una pregunta a la mesa redonda?</h3>
+{% crispy form %}
+  
+             </div>
             </div>
+
             {% if request.user and request.user.is_staff %}
             
             {% endif %}

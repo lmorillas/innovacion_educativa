@@ -3,6 +3,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.db import models
+from django.shortcuts import render, redirect
 
 from wagtail.wagtailcore.models import Page, Orderable
 
@@ -16,6 +17,8 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.fields import ParentalKey
+from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
+
 
 from django.utils.encoding import python_2_unicode_compatible
 from wagtail.wagtailsnippets.models import register_snippet
@@ -121,6 +124,24 @@ class Mesa(Personal):
 
 class Ponentes(Page):
     body = RichTextField(blank=True)
+
+    def serve(self, request):
+        from home.forms import PreguntaMesaForm
+
+        if request.method == 'POST':
+            form = PreguntaMesaForm(request.POST)
+            if form.is_valid():
+                pregunta = form.save()
+                
+            return redirect('/preguntas-la-mesa-redonda/gracias')
+        else:
+            form = PreguntaMesaForm()
+
+            return render(request, 'home/ponentes.html', {
+                'page': self,
+                'form': form,
+                })
+
     
 Ponentes.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),
@@ -252,15 +273,34 @@ class PaginaInscripciones(Page):
         FieldPanel('contenido', classname="full"),
         ]
 
-class Pregunta(Orderable):
+class PreguntaMesa(Orderable):
     
-    page = ParentalKey('PaginaPregunasMesa', related_name='preguntas')
+    page = ParentalKey('PaginaPreguntasMesa', related_name='preguntas', null=True)
     pregunta = models.CharField("Pregunta a la mesa", max_length=255)
-    quien = models.CharField("Quién pregunta?", max_length=255)
+    quien = models.CharField("¿Quién eres?", max_length=255)
     validada = models.BooleanField(default=False)
 
-    panels = [
-        FieldPanel('pregunta'),
-        FieldPanel('quien'),
-        FieldPanel('validadad')
-        ]
+    def save(self, *args, **kwargs):
+        p = PaginaPreguntasMesa.objects.get()
+        self.page = p
+        super(PreguntaMesa, self).save(*args, **kwargs) # Call the "real" save() method.
+
+class PaginaPreguntasMesa(RoutablePageMixin, Page):
+    body = RichTextField(blank=True)
+
+    def validadas(self):
+        return self.preguntas.filter(validada=True)
+
+    @route(r'^gracias/$')
+    def gracias(self, request):
+        context = self.get_context(request)
+        context['gracias'] = 'gracias'
+        
+        return render(request, 'home/pagina_preguntas_mesa.html', context)
+
+PaginaPreguntasMesa.content_panels = Page.content_panels + [
+    FieldPanel('body', classname="full"),
+    InlinePanel('preguntas', label="Pregunta"),
+    ]
+    
+
