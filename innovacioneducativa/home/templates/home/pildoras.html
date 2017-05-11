@@ -31,7 +31,14 @@
                     {{ pildora.procedencia | richtext}}
                     <br>
                     {{ pildora.observaciones | richtext}}
-                    
+                    <div class="pull-right">
+                    <img  width="40px" src="{% static "images/" %}{% cycle 'pildoraroja' 'pildoraazul' 'pildoraverde' 'pildoraamarilla' %}.png"%}" alt="pildora">
+                    </div>
+
+
+                    <div class="clearfix"></div>
+
+
                     </div>
                 </div>
                 </div>

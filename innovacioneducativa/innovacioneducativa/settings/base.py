@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'compressor',
     'asistentes',
     'crispy_forms',
+    'captcha',
 
 ]
 
