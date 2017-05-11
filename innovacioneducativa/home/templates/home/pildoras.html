@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+ {% block extra_head %}
+<style>
+.pildora .titulo {
+    background-color: #f0971e;
+}
+
+</style>
+
+ {% endblock %}
+
+{% block body_class %}template-ponentes{% endblock %}
+
+{% block body %}
+    <section>
+    <div class="pildoras">
+        <div class="container">
+            <div class="col-xs-12">
+                <h1>{{ page.title }}</h1>
+                <div class="row">
+                {% for pildora in page.pildoras.all %}
+                <div class="col-md-4 col-xs-12">
+                <div class="horario pildora">
+                <div class="titulo">
+                    <h3> {{ pildora.nombre }} </h3>
+                    </div>
+                    <div class="contenido">
+                    <strong>{{ pildora.quien | richtext }}</strong>
+                    {{ pildora.procedencia | richtext}}
+                    <br>
+                    {{ pildora.observaciones | richtext}}
+                    
+                    </div>
+                </div>
+                </div>
+                <!-- Modal -->
+<div id="taller-{{forloop.counter}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{taller.nombre}}</h4>
+      </div>
+      <div class="modal-body">
+        {{ taller.mas_info | richtext }} 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
