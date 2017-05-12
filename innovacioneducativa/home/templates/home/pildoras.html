@@ -22,7 +22,7 @@
                 <div class="row">
                 {% for pildora in page.pildoras.all %}
                 <div class="col-md-4 col-xs-12">
-                <div class="horario pildora">
+                <div class="pildorilla pildora">
                 <div class="titulo">
                     <h3> {{ pildora.nombre }} </h3>
                     </div>
@@ -32,7 +32,7 @@
                     <br>
                     {{ pildora.observaciones | richtext}}
                     <div class="pull-right">
-                    <img  width="40px" src="{% static "images/" %}{% cycle 'pildoraroja' 'pildoraazul' 'pildoraverde' 'pildoraamarilla' %}.png"%}" alt="pildora">
+                    <img  width="40px" src="{% static "images/" %}{% cycle 'pildoraroja' 'pildoraazul' 'pildoraverde' 'pildoraamarilla' 'pildoraazul' 'pildoraroja' 'pildoraverde' 'pildoraamarilla'  %}.png"%}" alt="pildora">
                     </div>
 
 
