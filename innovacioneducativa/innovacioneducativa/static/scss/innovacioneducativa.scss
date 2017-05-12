@@ -236,28 +236,6 @@ color: #FFFFFF;
 }
 
 
-.pildorilla {
-  //vendor-prefix found
-  //-webkit-box-shadow: 0 4px 0 rgba(0,0,0,0.2)
-  //vendor-prefix found
-  //-moz-box-shadow: 0 4px 0 rgba(0,0,0,0.2)
-  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-  box-shadow: 0 4px 0 $black_20;
-  //vendor-prefix found
-  //-webkit-border-radius: 8px
-  //vendor-prefix found
-  //-moz-border-radius: 8px
-  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-  border-radius: 800px;
-  background-color: $color_desert_storm_approx;
-  margin-bottom: 30px;
-  .titulo {
-    text-align: left;
-  }
-  .contenido {
-    padding: 10px;
-  }
-}
 
 
 .pildora {
@@ -355,4 +333,31 @@ button.navbar-toggle {
   height: 2px;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 1px;
+}
+
+.tarjeta {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    
+    .titulo {
+    border-radius: 5px 5px 0 0;
+}
+}
+
+.tarjeta:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+
+.pildorilla {
+  background-color: $color_desert_storm_approx;
+  margin-bottom: 30px;
+  .titulo {
+    text-align: left;
+  }
+  .contenido {
+    padding: 10px;
+  }
 }
