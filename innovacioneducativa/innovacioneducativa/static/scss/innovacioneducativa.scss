@@ -343,7 +343,13 @@ button.navbar-toggle {
     
     .titulo {
     border-radius: 5px 5px 0 0;
+    padding: 1px 5px;
+    text-align: center;
+
 }
+    h3 {
+    margin: 5px;
+    }
 }
 
 .tarjeta:hover {
@@ -354,9 +360,7 @@ button.navbar-toggle {
 .pildorilla {
   background-color: $color_desert_storm_approx;
   margin-bottom: 30px;
-  .titulo {
-    text-align: left;
-  }
+  
   .contenido {
     padding: 10px;
   }
