@@ -328,9 +328,17 @@ class Pildora(Orderable):
 
 class Pildoras(Page):
     body = RichTextField(blank=True)
+    imagen_pildora = models.ForeignKey(
+        "wagtailimages.Image",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="+"
+    )
     
 Pildoras.content_panels = Page.content_panels + [
     FieldPanel('body', classname="full"),
+    ImageChooserPanel("imagen_pildora"),
     InlinePanel('pildoras', label="Píldoras"),
     ]
 
