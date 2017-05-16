@@ -17,6 +17,8 @@ try:
 except ImportError:
     pass
 
+from .local_secret import *
+
 DEBUG = True
 
 if DEBUG:

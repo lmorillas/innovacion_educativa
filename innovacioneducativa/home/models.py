@@ -26,6 +26,10 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 from .blocks import BaseStreamBlock
 
+from django.contrib.auth.models import User
+
+from django.conf import settings
+
 
 class HTMLBlock(StreamBlock):
     raw_html = RawHTMLBlock()
@@ -265,10 +269,22 @@ class PaginaInscripciones(Page):
     """
     Página de inscripciones 
     """
+    mensaje_inscripciones = RichTextField(help_text='Mensaje inscripciones', 
+        null=True, blank=True)
     contenido = RichTextField(help_text='Texto inscripciones')
-    
 
+    def get_context(self, request):
+        context = super(PaginaInscripciones, self).get_context(request)
+
+        # Add extra variables and return the updated context
+        num_inscripciones = User.usuariotalleres.get_queryset().count()  
+        #UsuarioTalleres.objects.count()
+        context['num_inscripciones'] = num_inscripciones
+        context['completo'] = num_inscripciones >= settings.AFORO_MAXIMO
+        return context
+        
     content_panels = Page.content_panels + [
+        FieldPanel('mensaje_inscripciones', classname="full"),
         FieldPanel('contenido', classname="full"),
         ]
 

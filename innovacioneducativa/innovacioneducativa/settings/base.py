@@ -109,12 +109,12 @@ WSGI_APPLICATION = 'innovacioneducativa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 
 
 # Internationalization
@@ -180,6 +180,6 @@ REGISTRATION_AUTO_LOGIN = True
 REGISTRATION_EMAIL_HTML = False
 REGISTRATION_FORM = 'registration.forms.RegistrationFormUniqueEmail'
 
-AFORO_MAXIMO = 250
+AFORO_MAXIMO = 300
 TALLER_MAXIMO = 25
 ESPERA_MAXIMO = 50

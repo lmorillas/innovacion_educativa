@@ -27,10 +27,16 @@
     <div class="col-xs-12 col-md-8 col-md-offset-2">
         <div class="horario">
             <div class="contenido caja_presentacion">  
+            {% if not completo %}
+            {{page.mensaje_inscripciones | richtext}}
+            {% else %}
+            A tope co
+            {% endif  %}
+            <hr>
             {{page.contenido | richtext}}            
             </div>
             <div class="contenido caja_presentacion text-center">  
-            <strong>{% participantes %} participantes inscritos</strong>
+            <strong>{{num_inscripciones}} participantes inscritos</strong>
             </div>
         </div>
         <img class="img img-responsive" src="{% static "images/experiencia1.jpg" %}" alt="experiencias educativas">
