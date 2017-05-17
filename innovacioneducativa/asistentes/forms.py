@@ -50,9 +50,20 @@ class TalleresForm(forms.ModelForm):
 
 	def clean(self):
 		cleaned_data = super(TalleresForm, self).clean()
-		if UsuarioTalleres.objects.count() > AFORO_MAXIMO: 
+        #cleaned_data['user'] = 
+   
+		if UsuarioTalleres.objects.count() >= AFORO_MAXIMO: 
 			raise forms.ValidationError(
 	                    "Se ha completado el aforo, puedes apuntarte en la liststa de espera."
+	                )
+		t1 = cleaned_data.get('taller1')
+		t2 = cleaned_data.get('taller2')
+		t3 = cleaned_data.get('taller3')
+		t4 = cleaned_data.get('taller4')
+		talleres = [t for t in [t1, t2, t3, t4] if t]
+		if len(talleres) != len(set(talleres)):
+			raise forms.ValidationError(
+	                    "Has elegido dos veces el mismo taller."
 	                )
 		return cleaned_data
 
