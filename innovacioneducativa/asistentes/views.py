@@ -10,8 +10,11 @@ from .forms import TalleresForm, ListaDeEsperaForm
 from home.models import Taller
 from django.db.models import Count
 from django.db.models import Q
+from django.conf import settings
 
-MAX_TALLER = 2
+AFORO_MAXIMO = settings.AFORO_MAXIMO
+TALLER_MAXIMO = settings.TALLER_MAXIMO
+
 
 @login_required
 def inscripcion(request):
@@ -40,10 +43,10 @@ def inscripcion(request):
 		)
 
 	#q1 = Q(taller1T__lt=0 ) | Q(nombre=form.instance.taller1) if form.instance.taller else Q(taller1T__lt=1 )
-	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller1) )
-	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller2) )
-	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller3) )
-	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller4) )
+	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller1) )
+	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller2) )
+	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller3) )
+	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller4) )
 	context = {'form': form }
 	return render(request, 'asistentes/talleres.html', context)
 
@@ -84,9 +87,9 @@ def lista_espera(request):
 		)
 
 	#q1 = Q(taller1T__lt=0 ) | Q(nombre=form.instance.taller1) if form.instance.taller else Q(taller1T__lt=1 )
-	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller1) )
-	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller2) )
-	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller3) )
-	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=MAX_TALLER ) | Q(nombre=form.instance.taller4) )
+	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller1) )
+	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller2) )
+	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller3) )
+	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller4) )
 	context = {'form': form }
 	return render(request, 'asistentes/talleres.html', context)

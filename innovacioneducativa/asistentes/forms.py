@@ -14,7 +14,6 @@ from django.conf import settings
 AFORO_MAXIMO = settings.AFORO_MAXIMO
 TALLER_MAXIMO = settings.TALLER_MAXIMO
 
-
 class ListaDeEsperaForm(forms.ModelForm):
 	helper = FormHelper()
 	helper.form_class = 'form-horizontal'
@@ -24,12 +23,8 @@ class ListaDeEsperaForm(forms.ModelForm):
 
 	class Meta:
 	    model = ListaDeEspera
-	    widgets = {'user': forms.HiddenInput(),
-	    }
-	    exclude=[]
-
-
-
+	    
+	    exclude=['user']
 
 
 class TalleresForm(forms.ModelForm):
@@ -43,15 +38,11 @@ class TalleresForm(forms.ModelForm):
 
 	class Meta:
 	    model = UsuarioTalleres
-	    widgets = {'user': forms.HiddenInput(),
-	    #'comunidad_autonoma': forms.ChoiceField(choices=CA)
-	    }
-	    exclude=[]
+	    exclude=['user']
 
 	def clean(self):
 		cleaned_data = super(TalleresForm, self).clean()
-        #cleaned_data['user'] = 
-   
+		   
 		if UsuarioTalleres.objects.count() >= AFORO_MAXIMO: 
 			raise forms.ValidationError(
 	                    "Se ha completado el aforo, puedes apuntarte en la liststa de espera."

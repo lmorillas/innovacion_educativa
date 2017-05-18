@@ -36,6 +36,7 @@ class UsuarioTalleres(models.Model):
     	null=True, blank=True)
     comunidad_autonoma = models.CharField(verbose_name='Comunidad Autónoma', max_length=256,
     	null=True, blank=True, choices=CA)
+    pais = models.CharField(verbose_name='País', max_length=80, default="España")
     taller1 = models.ForeignKey(Taller, verbose_name="Viernes 1", on_delete=models.SET_NULL, null=True, 
     	blank = True, related_name = 'taller1', related_query_name="taller1")
     taller2 = models.ForeignKey(Taller, verbose_name="Viernes 2", on_delete=models.SET_NULL, null=True,
