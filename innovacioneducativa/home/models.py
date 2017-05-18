@@ -359,3 +359,34 @@ Pildoras.content_panels = Page.content_panels + [
     ]
 
 
+
+import django_tables2 as tables
+from django_tables2 import RequestConfig
+from asistentes.models import UsuarioTalleres
+class InscritosTable(tables.Table):
+    class Meta:
+        model = UsuarioTalleres
+        # add class="paleblue" to <table> tag
+        attrs = {'class': 'table table-bordered'}
+
+
+class ListaInscritos(Page):
+    body = RichTextField(blank=True)
+
+    
+    def get_context(self, request):
+        from asistentes.models import UsuarioTalleres
+
+        context = super(ListaInscritos, self).get_context(request)
+
+        inscritos = InscritosTable(UsuarioTalleres.objects.all())
+        RequestConfig(request, paginate={'per_page': 25}).configure(inscritos)
+
+        context['inscritos'] = inscritos
+        return context
+
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full"),
+        ]
+

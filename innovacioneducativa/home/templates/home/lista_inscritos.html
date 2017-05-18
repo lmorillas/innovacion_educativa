@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+
+{% block body_class %}template-ponentes{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+                <h1>{{ page.title }}</h1>
+
+                <div class="row">
+                 {% render_table inscritos %}
+                 
+                <ol>
+                {% for inscrito in inscritos.all %}
+                <li>{{inscrito.nombre}}</li>
+                {% endfor %}
+                </ol>
+</section>
+
+{% endblock %}

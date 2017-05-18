@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'captcha',
 
+    'django_tables2'
+
 ]
 
 MIDDLEWARE = [
