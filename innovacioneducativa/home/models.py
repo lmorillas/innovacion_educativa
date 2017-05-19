@@ -363,6 +363,7 @@ Pildoras.content_panels = Page.content_panels + [
 import django_tables2 as tables
 from django_tables2 import RequestConfig
 from asistentes.models import UsuarioTalleres
+
 class InscritosTable(tables.Table):
     class Meta:
         model = UsuarioTalleres

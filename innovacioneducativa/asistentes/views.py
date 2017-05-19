@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout
+import csv
+from django.http import StreamingHttpResponse, HttpResponse
+from django.utils.encoding import smart_str
 
 # Create your views here.
 
@@ -11,6 +14,10 @@ from home.models import Taller
 from django.db.models import Count
 from django.db.models import Q
 from django.conf import settings
+
+from .models import UsuarioTalleres
+
+from io import StringIO
 
 AFORO_MAXIMO = settings.AFORO_MAXIMO
 TALLER_MAXIMO = settings.TALLER_MAXIMO
@@ -93,3 +100,40 @@ def lista_espera(request):
 	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller4) )
 	context = {'form': form }
 	return render(request, 'asistentes/talleres.html', context)
+
+
+
+
+class Echo(object):
+    """An object that implements just the write method of the file-like
+    interface.
+    """
+    def write(self, value):
+        """Write the value by returning it, instead of storing in a buffer."""
+        return value
+
+@login_required
+def exportar_inscritos(request):
+	"""A view that streams a large CSV file."""
+	# Generate a sequence of rows. The range is based on the maximum number of
+	# rows that can be handled by a single sheet in most spreadsheet
+	# applications.
+	
+	#writer = csv.writer(pseudo_buffer)
+
+	#response = HttpResponse(content_type='text/csv')
+	#response['Content-Disposition'] = 'attachment; filename="inscritos_congreso.csv"'
+	f = StringIO()
+	writer = csv.writer(f)
+	#writer = csv.writer(response)
+	
+
+	datos = 'nombre apellidos nif activo signos traduccion centro_educativo comunidad_autonoma'.split()
+	writer.writerow([smart_str(d) for d in datos])
+
+	for obj in UsuarioTalleres.objects.all():
+		writer.writerow([smart_str(getattr(obj, k)) for k in datos])
+
+	response = StreamingHttpResponse(f.getvalue(), content_type="text/csv")
+	response['Content-Disposition'] = 'attachment; filename="inscritos_congreso.csv"'    
+	return response

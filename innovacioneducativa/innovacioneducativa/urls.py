@@ -23,6 +23,7 @@ urlpatterns = [
 
     url(r'^inscripciones/activar$', asistentes_views.inscripcion, name="inscripcion"),
     url(r'^inscripciones/gracias$', asistentes_views.gracias, name="gracias"),
+    url(r'^inscripciones/exportar$', asistentes_views.exportar_inscritos, name="exportarinscritos"),
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     # For anything not caught by a more specific rule above, hand over to
