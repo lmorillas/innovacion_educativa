@@ -114,19 +114,11 @@ class Echo(object):
 
 @login_required
 def exportar_inscritos(request):
-	"""A view that streams a large CSV file."""
-	# Generate a sequence of rows. The range is based on the maximum number of
-	# rows that can be handled by a single sheet in most spreadsheet
-	# applications.
-	
-	#writer = csv.writer(pseudo_buffer)
-
-	#response = HttpResponse(content_type='text/csv')
-	#response['Content-Disposition'] = 'attachment; filename="inscritos_congreso.csv"'
+	''' 
+	Test para exportar datos de inscritos
+	'''
 	f = StringIO()
 	writer = csv.writer(f)
-	#writer = csv.writer(response)
-	
 
 	datos = 'nombre apellidos nif activo signos traduccion centro_educativo comunidad_autonoma'.split()
 	writer.writerow([smart_str(d) for d in datos])

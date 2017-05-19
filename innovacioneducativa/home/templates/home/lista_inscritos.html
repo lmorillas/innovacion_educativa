@@ -8,15 +8,12 @@
     <section>
         <div class="container">
                 <h1>{{ page.title }}</h1>
-
-                <div class="row">
+<p><a href="/inscripciones/exportar">Descargar los datos en formato csv</a></p>
+                <div class="tabla">
                  {% render_table inscritos %}
                  
-                <ol>
-                {% for inscrito in inscritos.all %}
-                <li>{{inscrito.nombre}}</li>
-                {% endfor %}
-                </ol>
+                </div>
+                
 </section>
 
 {% endblock %}
