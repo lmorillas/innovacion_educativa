@@ -62,12 +62,14 @@ class HomePage(Page):
         default="I Jornadas de INNOVACIÓN METODOLÓGICA EN EDUCACIÓN")
     subtitulo = models.CharField(max_length=200, 
         default= "22-23 Septiembre - Zaragoza")
+    lema =  models.CharField(max_length=240, blank = True) 
     presentacion = StreamField(HTMLBlock(), blank=True)
     objetivos = StreamField(HTMLBlock(), blank=True)
     saludo_consejera = StreamField(HTMLBlock(), blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('titulo'),
+        FieldPanel('lema'),
         FieldPanel('subtitulo'),
         ImageChooserPanel("imagen_principal"),
         StreamFieldPanel("presentacion"),
