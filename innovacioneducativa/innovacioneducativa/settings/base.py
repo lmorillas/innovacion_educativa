@@ -28,6 +28,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    #'cuser',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -182,6 +183,11 @@ REGISTRATION_AUTO_LOGIN = True
 REGISTRATION_EMAIL_HTML = False
 REGISTRATION_FORM = 'registration.forms.RegistrationFormUniqueEmail'
 
-AFORO_MAXIMO = 300
+AFORO_MAXIMO = 700
 TALLER_MAXIMO = 25
 ESPERA_MAXIMO = 50
+LOGIN_REDIRECT_URL = '/'
+
+
+
+

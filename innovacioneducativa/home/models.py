@@ -393,3 +393,34 @@ class ListaInscritos(Page):
         FieldPanel('body', classname="full"),
         ]
 
+
+class PaginaEstandar(Page):
+    """
+    A generic content page. On this demo site we use it for an about page but
+    it could be used for any type of page content that only needs a title,
+    image, introduction and body field
+    """
+
+    introduction = models.TextField(verbose_name="Introducción",
+        help_text='Texto para describir la página',
+        blank=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        verbose_name = "Imagen principal",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Imagen principal. Sólo horizontal. Anchura entre 1000px y 3000px.'
+    )
+    body = StreamField(
+        BaseStreamBlock(), verbose_name="Cuerpo de la página", blank=True
+    )
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction', classname="full"),
+        StreamFieldPanel('body'),
+        ImageChooserPanel('image'),
+    ]
+
+
+

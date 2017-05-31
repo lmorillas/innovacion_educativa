@@ -50,9 +50,22 @@ if DEBUG:
        'INTERCEPT_REDIRECTS': False,
    }
 
-   DATABASES = {
+#   DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'congreso2',
+        'USER': 'innovaeducar',
+        'PASSWORD': 'Nnvdcr6Ioaeua6',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
