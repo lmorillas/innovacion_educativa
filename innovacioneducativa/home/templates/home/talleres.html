@@ -23,6 +23,9 @@
                     </div>
                 </div>
                 </div>
+                {% if forloop.counter == 3 %}
+                </div><div class="row">
+                {% endif %}
                 <!-- Modal -->
 <div id="taller-{{forloop.counter}}" class="modal fade" role="dialog">
   <div class="modal-dialog">
