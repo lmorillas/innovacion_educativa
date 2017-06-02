@@ -9,10 +9,14 @@ $black_20: rgba(0,0,0,0.2);
 $color_desert_storm_approx: #f8f8f8;
 $color2: #6a8cc1;
 $color5: #bf6b1f;
-
+$link_menu: #000;
+$menu_active: rgb(176, 11, 92);
+$amarillo: #d7db4c;
+$fondosaludo: #f1f1f1;;
 
 //fonts
-$font_0: Dosis;
+$font_0: Roboto;
+$fuente_texto: "Open Sans", Arial, Helvetica, sans-serif;
 
 //urls
 $url_0: url( "/media/images/exterior.original.png" );
@@ -22,8 +26,6 @@ $url_0: url( "/media/images/exterior.original.png" );
 //.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
 %extend_1 {
   font-family: $font_0;
-  font-weight: 500;
-  line-height: 1.1;
   color: inherit;
 }
 
@@ -81,45 +83,68 @@ a {
   }
 }
 #header {
-  min-height: 30px;
-  background-color: $color1 !important;
+  min-height: 140px;
+  background-color: #fff;
   border-bottom: solid 1px $color_celeste_approx;
   z-index: 999 !important;
-  color: $white;
+  color: #000;
 }
 #menu {
   padding: 2px;
+  .active {
+      color: $menu_active;
+  }
+  .navbar-nav {
+  margin-top: 50px;
+  }
   .navbar-collapse {
+  color: $link_menu;
     padding: 0;
     .caret {
       margin: -8px 0 0;
     }
+    .active {
+    color: green;
+    }
     li {
-      a {
-        font-family: $font_0;
+
+      
+    a {
+      font-family: $font_0;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      background: none !important;
+      font-stretch: normal;
+      text-transform: uppercase;
+      color: $link_menu;
+
+    }
+
+    
+    /*
+    li a {
         font-size: 14px;
-        font-weight: normal;
-        font-style: normal;
-        background: none !important;
-        font-stretch: normal;
-        letter-spacing: 0.9px;
-        color: $white;
-        text-transform: uppercase;
-      }
-      li a {
-        font-size: 18px;
         font-weight: normal;
         min-width: 260px;
         font-style: normal;
         font-stretch: normal;
         line-height: 1.44;
-        color: $white;
         padding: 13px 15px;
-        &:hover {
+        
+        :hover {
           color: $white;
-          background-color: $white !important;
+          //background-color: $white !important;
         }
       }
+      */    
+    }
+    li.active a {
+    color: $menu_active;
+    }
+
+    li a:hover{
+    color: $menu_active;
     }
     ul ul {
       z-index: 999;
@@ -142,31 +167,19 @@ a {
   }
 }
 .navbar-fixed-top {
-  background-color: $color1 !important;
+  //background-color: $color1 !important;
 }
 #encabezado {
-  height: 600px;
-  background: linear-gradient($black_40, $black_40) repeat scroll 0 0, rgba(0, 0, 0, 0) $url_0;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  //vendor-prefix found
-  //-webkit-background-size: cover
-  //vendor-prefix found
-  //-moz-background-size: cover
-  //vendor-prefix found
-  //-o-background-size: cover
-  background-size: cover;
-  overflow: hidden;
+ 
   h1 {
     font-family: $font_0;
-    font-size: 55px;
+    font-size: 28px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     letter-spacing: 2.7px;
-    color: $color4;
-    text-align: left;
+    color: white;
+    text-align: center;
     padding-top: 120px;
   }
 h2 {
@@ -197,12 +210,9 @@ color: #FFFFFF;
     text-align: center;
   }
 }
-.presentacion {
-  padding: 30px;
-  font-size: 24px;
-}
+
 #footer {
-  background-color: $color4;
+
   padding: 20px 0;
   color: $black;
   a {
@@ -363,5 +373,38 @@ button.navbar-toggle {
   
   .contenido {
     padding: 10px;
+  }
+}
+
+
+.homepage {
+  background-color: $amarillo;
+}
+
+.presentacion {
+   font-size: 24px;
+   text-align: justify;
+   line-height: 1.54;
+   font-family: "Open Sans", Arial, Helvetica, sans-serif;
+   font-weight: 400;
+   letter-spacing: 0px;
+   padding: 40px 40px;
+}
+
+.saludo {
+  background-color: $fondosaludo;
+  font-size: 18px;
+  text-align: justify;
+  font-family: $fuente_texto;
+  padding: 20px 40px; 
+}
+
+.colaboradores {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  p {
+    padding-top: 10px ;
+    font-weight: bold;
   }
 }

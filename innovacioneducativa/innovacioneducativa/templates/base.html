@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Nunito|Open+Sans:300,400" rel="stylesheet">
+    <link rel='stylesheet' id='avada_google_fonts-css'  href='https://fonts.googleapis.com/css?family=Roboto+Condensed%3A400%2C700%7CPT+Sans%3A400%7COpen+Sans%3A400%7CRoboto+Slab%3A300%7CRoboto%3A500&#038;subset=greek-ext' type='text/css' media='all' />
     
      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -45,68 +45,14 @@
 <body class="{% block body_class %}{% endblock %}">
 {% wagtailuserbar "bottom-left" %}
 <header>
-    <div id="header">
-        <div class="container">
-            <div class="col-xs-12" id="menu">
-                <nav class="navbar-fixed navbar-fixed-top">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            {% main_menu %}
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
+    {% include "includes/header.html" %}
 {% block header%}
 {% endblock %}
 </header>
 {% block body %}
 
 {% endblock %}
-<footer>
-    <div id="footer">
-        <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2 col-xs-12">
-<a href="http://www.educaixa.com"><img class="img img-responsive" src="/static/images/educaixa.png" alt="educaixa"></a>                          
-            </div>
-            <div class="col-md-4 col-xs-12">
-            <p>Polícita de privacidad</p>
-            <p>Créditos</p>
-            <p>Código de conducta</p>
-            <p><a href="{{ BASE_URL_PATH }}/contacto">Contacto</a></p>
-            </div>
-            <div class="col-md-4 col-xs-12 social">
-                 <h4>Participa</h4>
-                 <p><a href="https://twitter.com/InnovaEducAr" title="Twitter">
-                            <i class="fa fa-twitter"></i> Twitter
-                        </a>
-                </p>
-                <p>
-                 <a href="https://www.facebook.com/InnovaEducAr/" title="Facebook">
-                            <i class="fa fa-facebook"></i> Facebook
-                        </a></p>
-                
-                <p><a href="{{ BASE_URL_PATH }}/ponentes#pregunta"><i class="fa fa-question-circle" aria-hidden="true"></i>
- Haz una pregunta a la mesa redonda</a></p>
- <p><a href="{{ BASE_URL_PATH }}/preguntas-la-mesa-redonda"><i class="fa fa-list-alt" aria-hidden="true"></i> Preguntas seleccionadas</a></p>
-            </div>
-            <div class="col-md-2 col-xs-12">
-                <a href="http://www.educaragon.org"><img class="img img-responsive"  src="{% static "images/educaragon.png" %}" data-rjs="2"></a>
-            </div>
-        </div>
-        </div>
-    </div>
-</footer>
+{% include "includes/footer.html" %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
 {% block extra_script %}{% endblock %}

@@ -1,81 +1,49 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags static %}
-{% block body_class %}template-homepage{% endblock %}
-
-{% block extra_head %}
-<link href="https://fonts.googleapis.com/css?family=Norican" rel="stylesheet">
-<style>
-#encabezado  h1 .amano {
-    font-family: 'Norican', cursive;
-    font-size: 60px;
-    letter-spacing: 2.5px;
-}
-
-
-#encabezado .fecha {
-    width: 150px;
-    height: 150px;
-    float: right;
-    background: #F0971E;
-    color: #ffffff;
-    padding: 25px 10px;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    border: 4px solid #ffffff;
-    -webkit-transform: rotate(20deg); 
-    -moz-transform: rotate(20deg); 
-    -ms-transform: rotate(20deg); 
-    -o-transform: rotate(20deg); 
-    transform: rotate(20deg);
-    margin-right: 20px;
-}
-
-#sec1 {
-    padding-top: 12px;
-}
-
-.objetivos {
-    background-color: #6A8CC1;
-    color: #ffffff;
-}
-
-
-</style>
-{% endblock %}
+{% block body_class %}homepage{% endblock %}
 
  {% block header%}
 
-{% image page.imagen_principal original as fondo %}
 
-<div id="encabezado" style="background-image: url({{ fondo.url }}); repeat: no-repeat; ">
-    
-        <h1 class="col-md-offset-1">{{ page.titulo }}</span></h1>
-        <h2 class="col-md-offset-1 lema"><span>{{ page.lema }}</span></h2>
-        <h3 class="col-xs-2 fecha">{{page.subtitulo}}</h3>
+
+<div id="encabezado">
+  <img class="img img-responsive" src="{%static "images/imagen_inicio.jpg"%}"
+        alt="imagen inicio">
+
+{% comment %}
+        <h1 class="titulo">{{ page.titulo }}</span></h1>
+        <h2 class="lemacongreso"><span>{{ page.lema }}</span></h2>
+        <h3 class="fechacongreso">{{page.subtitulo}}</h3>
+{% endcomment %}
     
 </div>
  {% endblock %}
 
 {% block body %}
-    <section>
-    <div id="sec1">
-        <div class="container">
+        <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-md-10 presentacion objetivos col-md-offset-1 panel panel-default">
-            
+            <br>
+            <br>
+            <div class="col-xs-12 col-md-8 col-md-offset-2 presentacion">
                 {{ page.presentacion }}
             </div>
-            </div>
-            <div class="row">
+            
+        </div>
+            <div class="row saludo">
             <div class="col-xs-12 col-md-10 col-md-offset-1">
             <h2 class="col-xs-12 text-center">Saludo de la consejera</h2>
-                {% image page.imagen_consejera width-100 as consejera%}          
-                <img src="{{ consejera.url }}" alt="Imagen Consejera" class="img img-circle center-block">
-                <div class="presentacion">{{ page.saludo_consejera }}</div>
+                <div class="row">
+                
+                 <img  src="{%static "images/foto-consejera-1.jpg"%}" alt="Imagen Consejera" class="img img-responsive img-circle center-block">
+                
+                 </div>
+                <div class="saludo">{{ page.saludo_consejera }}</div>
             </div>
             </div>
-            </div>
-    </div>
-</section>
+
+</div>
+{% include "includes/colaboradores.html" %}
+
+  
+
 {% endblock %}
