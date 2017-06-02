@@ -28,16 +28,9 @@
                 {% endif %}
                 
                 {% endfor %}
-                </div>
-            </div>
-</section>
-
-<section>
-<div class="container">
-            <h1 >Dinamizador de la mesa redonda</h1>
-            <div class="row">
+               
             {% with mesa=page.coordinador.first %}
-            <div class="col-md-4 col-md-offset-4 col-xs-12">
+            <div class="col-md-4 col-xs-12">
             <div class="panel panel-default horario">
             <div class="titulo-mesa"><br>
                 {% image mesa.imagen width-80 class="img img-circle center-block" %}
@@ -45,6 +38,8 @@
                     <h3 class="text-center">{{ mesa.nombre }}</h3>
                 </div>
                 <div class="contenido panel-body">
+                <p class="text-center">
+                <strong >Moderador de la mesa redonda</strong></p>
                 <strong>{{ mesa.biografia | richtext }}</strong>
                     {{ mesa.descripcion| richtext }}
                     <p> <a href="{{ mesa.mas_info}}">Más información</a></p>
@@ -52,17 +47,9 @@
                 </div>
             </div>
             {% endwith %}
-             <div class="col-md-6 col-md-offset-3 col-xs-12">
- <h3 class="text-center" id="pregunta">¿Quieres sugerir una pregunta a la mesa redonda?</h3>
-{% crispy form %}
-  
-             </div>
+            </div>
             </div>
 
-            {% if request.user and request.user.is_staff %}
-            
-            {% endif %}
-        </div>
 </section>
 
 {% endblock %}

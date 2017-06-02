@@ -1,18 +1,21 @@
 //colors
-$color1: #3563a8; 
-$color_celeste_approx: #ccc;
+$color1: rgb(176, 11, 92);
+$amarillo: #d7db4c;
+$color_celeste_approx: $color1;
 $white: #ffffff;
 $black_40: rgba(0, 0, 0, 0.4);
-$color4: #f0971e;
+$gris: #f1f1f1;
 $black: #000000;
 $black_20: rgba(0,0,0,0.2);
 $color_desert_storm_approx: #f8f8f8;
-$color2: #6a8cc1;
-$color5: #bf6b1f;
+$color2: $color1;
+$color4: $amarillo;
+$color5: rgb(192, 198, 52);
 $link_menu: #000;
-$menu_active: rgb(176, 11, 92);
-$amarillo: #d7db4c;
-$fondosaludo: #f1f1f1;;
+$menu_active: $color1;
+
+$fondosaludo: $gris;
+
 
 //fonts
 $font_0: Roboto;
@@ -400,6 +403,7 @@ button.navbar-toggle {
 }
 
 .colaboradores {
+  border-top:  1px solid $color4;
   background-color: white;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -407,4 +411,23 @@ button.navbar-toggle {
     padding-top: 10px ;
     font-weight: bold;
   }
+}
+
+.btn-info {
+  color: #fff;
+  background-color: $color5;
+  border-color: $color4;
+  &:hover, &:focus, &:active {
+  color: $gris;
+  background-color: $color4 !important;
+  border-color: $gris !important;
+  }
+}
+
+#footer{
+  background-color: $color4;
+}
+
+a {
+  color: $color1;
 }
