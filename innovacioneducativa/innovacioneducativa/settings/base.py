@@ -28,7 +28,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
-    #'cuser',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -44,11 +43,10 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.wagtailstyleguide',
     'wagtailfontawesome',
-    "wagtail.contrib.wagtailroutablepage",
 
     'modelcluster',
     'taggit',
-    'registration',
+    #'registration',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,10 +59,7 @@ INSTALLED_APPS = [
     'compressor',
     'asistentes',
     'crispy_forms',
-    'captcha',
-
-    'django_tables2'
-
+    'django_tables2',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +74,6 @@ MIDDLEWARE = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'innovacioneducativa.urls'
@@ -112,12 +106,12 @@ WSGI_APPLICATION = 'innovacioneducativa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Internationalization
@@ -164,13 +158,16 @@ SECRET_KEY = 'ADFQ7854493R2P5J46TU8NV84U2T90574CT2452457289UJMPP__:mkmjj'
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 #BASE_URL = 'http://localhost/main'
 
-ALLOWED_HOSTS = ['178.32.253.90', 'localhost']
+ALLOWED_HOSTS = ['congresoinnovacion.educa.aragon.es', 'localhost']
+DEBUG = True
 
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'sassc {infile} {outfile}'),
+    ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-#COMPRESS_OFFLINE = True
+
+COMPRESS_OFFLINE = True
 #
 BASE_URL_PATH = '/'
 
@@ -178,16 +175,15 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 PASSWORD_REQUIRED_TEMPLATE = 'innovacioneducativa/password_required.html'
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 # registration
-ACCOUNT_ACTIVATION_DAYS = 1 
-REGISTRATION_AUTO_LOGIN = True 
-REGISTRATION_EMAIL_HTML = False
-REGISTRATION_FORM = 'registration.forms.RegistrationFormUniqueEmail'
+#ACCOUNT_ACTIVATION_DAYS = 1 
+#REGISTRATION_AUTO_LOGIN = True 
+#REGISTRATION_EMAIL_HTML = False
+#REGISTRATION_FORM = 'registration.forms.RegistrationFormUniqueEmail'
 
 AFORO_MAXIMO = 700
 TALLER_MAXIMO = 25
-ESPERA_MAXIMO = 50
+
+MAX_ARAGON = 595
+MAX_FUERA_ARAGON = 105
+
 LOGIN_REDIRECT_URL = '/'
-
-
-
-

@@ -1,5 +1,5 @@
 from django import template
-from asistentes.models import UsuarioTalleres
+from asistentes.models import Participante
 
 
 
@@ -11,4 +11,4 @@ def participantes():
 	'''
 	Devuelve número de asistentes que han confirmado ya el email y se han inscrito
 	'''
-	return UsuarioTalleres.objects.count()
+	return Participante.objects.count()

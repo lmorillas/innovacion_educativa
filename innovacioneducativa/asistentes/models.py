@@ -1,7 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from home.models import Taller
-from django.contrib.auth.models import User
     
 from django.conf import settings
 from django.utils.translation import ugettext as _
@@ -43,9 +40,9 @@ class Participante(models.Model):
     pais = models.CharField(verbose_name='País', max_length=80, default="España")
     fecha_inscripcion = models.DateTimeField(auto_now_add=True)
 
-
+'''
 class UsuarioTalleres(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nombre = models.CharField(verbose_name='Nombre', max_length=120)
     apellidos = models.CharField(verbose_name='Apellidos', max_length=240)
     nif = models.CharField(verbose_name='NIF', max_length=32)
@@ -65,7 +62,7 @@ class UsuarioTalleres(models.Model):
     	 blank = True, related_name='taller3', related_query_name="taller3")
     taller4 = models.ForeignKey(Taller, verbose_name="Sábado", on_delete=models.SET_NULL, null=True,
     	 blank = True, related_name='taller4', related_query_name="taller4")
-
+'''
 
 class ListaDeEspera(models.Model):   
     nombre = models.CharField(verbose_name='Nombre', max_length=120)

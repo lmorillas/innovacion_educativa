@@ -29,6 +29,7 @@ from .blocks import BaseStreamBlock
 from django.contrib.auth.models import User
 
 from django.conf import settings
+from asistentes.models import Participante
 
 
 class HTMLBlock(StreamBlock):
@@ -279,7 +280,7 @@ class PaginaInscripciones(Page):
         context = super(PaginaInscripciones, self).get_context(request)
 
         # Add extra variables and return the updated context
-        num_inscripciones = User.usuariotalleres.get_queryset().count()  
+        num_inscripciones = Participante.objects.count()  
         #UsuarioTalleres.objects.count()
         context['num_inscripciones'] = num_inscripciones
         context['completo'] = num_inscripciones >= settings.AFORO_MAXIMO
@@ -364,25 +365,24 @@ Pildoras.content_panels = Page.content_panels + [
 
 import django_tables2 as tables
 from django_tables2 import RequestConfig
-from asistentes.models import UsuarioTalleres
+
 
 class InscritosTable(tables.Table):
     class Meta:
-        model = UsuarioTalleres
+        model = Participante
         # add class="paleblue" to <table> tag
         attrs = {'class': 'table table-bordered'}
 
 
 class ListaInscritos(Page):
     body = RichTextField(blank=True)
-
     
     def get_context(self, request):
-        from asistentes.models import UsuarioTalleres
+        from asistentes.models import Participante
 
         context = super(ListaInscritos, self).get_context(request)
 
-        inscritos = InscritosTable(UsuarioTalleres.objects.all())
+        inscritos = InscritosTable(Participante.objects.all())
         RequestConfig(request, paginate={'per_page': 25}).configure(inscritos)
 
         context['inscritos'] = inscritos
