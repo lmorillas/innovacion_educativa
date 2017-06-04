@@ -18,7 +18,7 @@ TALLER_MAXIMO = settings.TALLER_MAXIMO
 
 class EmailForm(forms.Form):
 	email = forms.EmailField(label=_('Tu email'), max_length=120, 
-		help_text=_('Introduzce tu email'))
+		help_text=_('Introduce tu email'))
 	helper = FormHelper()
 	helper.form_class = 'form-horizontal'
 	helper.label_class = 'col-md-2 col-xs-12'
