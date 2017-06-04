@@ -29,10 +29,11 @@ $url_0: url( "/media/images/exterior.original.png" );
 //.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
 %extend_1 {
   font-family: $font_0;
-  color: inherit;
+  color: $color1;
 }
 
-
+h4 a {color: $color5;}
+.titulo-ponente,.horario h3 {color: white;}
 html {
   font-family: $font_0;
 }
