@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}Error en la inscripción{% endblock %}
+
+{% block body %}
+<div class="container-fluid" style="min-height:480px;">
+<div class="row col-md-6 col-md-offset-3">
+<h1 class="text-center">Error en la inscripción</h1>
+<p>Lo sentimos, ha habido un error en la inscripción en el Congreso: <strong>{{error}}</strong>
+</p>
+<i class="fa fa-address-card-o  fa-5x" aria-hidden="true"></i>
+</div>
+
+</div>
+{% endblock %}
+
+{% comment %}
+**registration/registration_complete.html**
+
+Used after successful completion of the registration form. This
+template has no context variables of its own, and should simply inform
+the user that an email containing account-activation information has
+been sent.
+{% endcomment %}

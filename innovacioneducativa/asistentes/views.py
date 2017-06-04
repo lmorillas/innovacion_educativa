@@ -1,116 +1,154 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import logout
+
 import csv
 from django.http import StreamingHttpResponse, HttpResponse
 from django.utils.encoding import smart_str
+from django.utils.translation import ugettext as _
 
 # Create your views here.
 
-from .models import UsuarioTalleres
-from .forms import TalleresForm, ListaDeEsperaForm
+from .forms import EmailForm, AsistenteForm, EsperaForm
 from home.models import Taller
 from django.db.models import Count
 from django.db.models import Q
 from django.conf import settings
 
-from .models import UsuarioTalleres
+from .models import Participante, ListaDeEspera
 
 from io import StringIO
 
+from django.core.mail import send_mail
+from django.template import loader
+
+from django.core.signing import TimestampSigner, BadSignature, SignatureExpired
+from .errores import *
+
+
 AFORO_MAXIMO = settings.AFORO_MAXIMO
-TALLER_MAXIMO = settings.TALLER_MAXIMO
+MAX_ARAGON =  settings.MAX_ARAGON
+MAX_FUERA_ARAGON = settings.MAX_FUERA_ARAGON
+# TALLER_MAXIMO = settings.TALLER_MAXIMO
 
 
-@login_required
-def inscripcion(request):
-	usuario = UsuarioTalleres.objects.filter(user=request.user)
+def make_token(email):
+    return TimestampSigner().sign(email)
+
+def inscribeme(request):
+	email_template_name = 'asistentes/correo_confirmacion.html'
+	subject_template_name = _('Confirmación de solicitud de participación')
+	
+	mensaje = loader.get_template('asistentes/email_confirmacion.txt')
+
+	template_name = 'asistentes/email.html'
+	
 	if request.method == 'POST':
-		if 'cancel' in request.POST:
-			redirect('home')
-		if usuario:
-			form = TalleresForm(request.POST, instance=usuario[0])
-		else:
-			form = TalleresForm(request.POST)
+        # create a form instance and populate it with data from the request:
+		form = EmailForm(request.POST)
+
 		if form.is_valid():
-			form.save()
-			return redirect('gracias', permanent=True )
-		
+			# process the data in form.cleaned_data as required
+			email = form.cleaned_data.get('email')
+			email, token = make_token(email).split(":", 1)
+			context = {'token': token, 'email': email}
+			send_mail('Solicitud de participación el en I Congreso Internacional de Innovación Educativa',
+				mensaje.render(context , request ),
+				None,
+				(email,),
+				)
+			return redirect('gracias_solicitud')
+
+    # if a GET (or any other method) we'll create a blank form
 	else:
+		form = EmailForm()
+
+	return render(request, 'asistentes/email.html', {'form': form})
+
+def error(request):
+	error = request.session.pop('error', '')
+	contexto = {'error': error}
+	return render(request, 'asistentes/errores.html', contexto)
+	
+
+def completar(request, *args, **kwargs):
+	token = kwargs.get('token', '')
+	email = kwargs.get('email', '')
+	#print ( '***', kwargs)
+	existe = False
+	try: 
+		Participante.objects.get(email=email)
+		existe = True
+	except:
+		pass
+	if existe:
+		request.session['error'] = 'Ya se ha inscrito un participante con esta dirección \
+		de correo electrónico: {}.'.format(email)
+		return redirect('/inscripcion/error')
+	try:
+		key = '%s:%s' % (email, token)
+		TimestampSigner().unsign(key, max_age=1 * 60 * 60)
+	except (BadSignature, SignatureExpired):
+		request.session['error'] = ERROR_TOKEN
 		
-		if usuario:
-			form = TalleresForm(instance=usuario[0])
-		else:
-			form = TalleresForm(initial={'user': request.user})
-	query = Taller.objects.annotate(taller1T = Count('taller1'),
-		taller2T = Count('taller2'),
-		taller3T = Count('taller3'),
-		taller4T = Count('taller4'),
-		)
+		return redirect('/inscripcion/error')
+	if Participante.objects.count() >= AFORO_MAXIMO:
+		request.session['error'] = 'Se ha completado el aforo del Congreso. Puedes apuntarte a la lista de espera'
+		return redirect('/inscripcion/error')
 
-	#q1 = Q(taller1T__lt=0 ) | Q(nombre=form.instance.taller1) if form.instance.taller else Q(taller1T__lt=1 )
-	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller1) )
-	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller2) )
-	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller3) )
-	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller4) )
-	context = {'form': form }
-	return render(request, 'asistentes/talleres.html', context)
-
-@login_required
-def incripcion_update(request, pk, template_name='asistentes/talleres.html'):
-	datos = get_object_or_404(UsuarioTalleres, user=request.user)
-	form = TalleresForm(request.POST or None, instance=datos)
-	if form.is_valid():
-		form.save()
-		return redirect('home')
-	return render(request, template_name, {'form':form})
-
-@login_required
-def gracias(request, template_name='asistentes/gracias.html'):
-	contexto = {'usuario': request.user.username}
-	logout(request)
-	return render(request, template_name, contexto)
-
-
-@login_required
-def lista_espera(request):
 	if request.method == 'POST':
-		form = Lista(request.POST)
+		form = AsistenteForm(request.POST)
 		if form.is_valid():
-			form.save()
+			ca = form.cleaned_data.get('comunidad_autonoma')
+			if ca =='Aragón':
+				if Participante.objects.filter(Q(comunidad_autonoma='Aragón')).count() >= MAX_ARAGON:
+					request.session['error'] = E_MAX_ARAGON
+					return redirect('/inscripcion/error')
+
+			else:
+				if Participante.objects.filter(~Q(comunidad_autonoma='Aragón')).count() >= MAX_FUERA_ARAGON:
+					request.session['error'] = E_MAX_FUERA_ARAGON
+					return redirect('/inscripcion/error')
+
+			participante = form.save(commit=False)
+			participante.email = email
+			participante.save()
 			return redirect('gracias', permanent=True )
-		
 	else:
-		
-		if usuario:
-			form = TalleresForm(instance=usuario[0])
-		else:
-			form = TalleresForm(initial={'user': request.user})
-	query = Taller.objects.annotate(taller1T = Count('taller1'),
-		taller2T = Count('taller2'),
-		taller3T = Count('taller3'),
-		taller4T = Count('taller4'),
-		)
+		form = AsistenteForm()
 
-	#q1 = Q(taller1T__lt=0 ) | Q(nombre=form.instance.taller1) if form.instance.taller else Q(taller1T__lt=1 )
-	form.fields['taller1'].queryset = query.filter( Q(taller1T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller1) )
-	form.fields['taller2'].queryset = query.filter( Q(taller2T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller2) )
-	form.fields['taller3'].queryset = query.filter( Q(taller3T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller3) )
-	form.fields['taller4'].queryset = query.filter( Q(taller4T__lt=TALLER_MAXIMO ) | Q(nombre=form.instance.taller4) )
-	context = {'form': form }
-	return render(request, 'asistentes/talleres.html', context)
+	return render(request, 'asistentes/formulario_asistente.html', {'form': form})
 
 
 
+def inscribeme_lista_espera(request):
+	email_template_name = 'asistentes/correo_confirmacion_espera.html'
+	subject_template_name = _('Confirmación de solicitud de participación')
+	
+	mensaje = loader.get_template('asistentes/email_confirmacion_.txt')
 
-class Echo(object):
-    """An object that implements just the write method of the file-like
-    interface.
-    """
-    def write(self, value):
-        """Write the value by returning it, instead of storing in a buffer."""
-        return value
+	template_name = 'asistentes/email.html'
+	
+	if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+		form = EmailForm(request.POST)
+
+		if form.is_valid():
+			# process the data in form.cleaned_data as required
+			email = form.cleaned_data.get('email')
+			email, token = make_token(email).split(":", 1)
+			context = {'token': token, 'email': email}
+			send_mail('Solicitud de participación el en I Congreso Internacional de Innovación Educativa',
+				mensaje.render(context , request ),
+				None,
+				(email,),
+				)
+			return redirect('gracias_solicitud')
+
+    # if a GET (or any other method) we'll create a blank form
+	else:
+		form = EmailForm()
+
+
 
 @login_required
 def exportar_inscritos(request):
@@ -129,3 +167,81 @@ def exportar_inscritos(request):
 	response = StreamingHttpResponse(f.getvalue(), content_type="text/csv")
 	response['Content-Disposition'] = 'attachment; filename="inscritos_congreso.csv"'    
 	return response
+
+
+def gracias(request, template_name='asistentes/gracias.html'):
+	return render(request, template_name)
+
+def gracias_solicitud(request, template_name='asistentes/gracias_solicitud.html'):
+	
+	return render(request, template_name, {})
+
+
+
+### Lista de espera
+def inscribeme_lista_espera(request):
+	#email_template_name = 'asistentes/correo_confirmacion_espera.html'
+	subject_template_name = _('Confirmación de solicitud de participación')
+	
+	mensaje = loader.get_template('asistentes/email_confirmacion_espera.txt')
+	
+	if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+		form = EmailForm(request.POST)
+
+		if form.is_valid():
+			# process the data in form.cleaned_data as required
+			email = form.cleaned_data.get('email')
+			email, token = make_token(email).split(":", 1)
+			context = {'token': token, 'email': email}
+			send_mail('Solicitud de participación lista de espera en I Congreso Internacional de Innovación Educativa',
+				mensaje.render(context , request ),
+				None,
+				(email,),
+				)
+			return redirect('gracias_solicitud_espera')
+
+    # if a GET (or any other method) we'll create a blank form
+	else:
+		form = EmailForm()
+
+	return render(request, 'asistentes/email_espera.html', {'form': form})
+
+def gracias_espera(request, template_name='asistentes/gracias_espera.html'):
+	return render(request, template_name)
+
+def gracias_solicitud_espera(request, template_name='asistentes/gracias_solicitud_espera.html'):
+	return render(request, template_name, {})
+
+
+def completar_lista_espera(request, *args, **kwargs):
+	token = kwargs.get('token', '')
+	email = kwargs.get('email', '')
+	existe = False
+	try: 
+		ListaDeEspera.objects.get(email=email)
+		existe = True
+	except:
+		pass
+	if existe:
+		request.session['error'] = 'Ya se ha inscrito un participante con esta dirección \
+		de correo electrónico: {}.'.format(email)
+		return redirect('/inscripcion/error')
+	try:
+		key = '%s:%s' % (email, token)
+		TimestampSigner().unsign(key, max_age=1 * 60 * 60)
+	except (BadSignature, SignatureExpired):
+		request.session['error'] = ERROR_TOKEN
+		return redirect('/inscripcion/error')
+
+	if request.method == 'POST':
+		form = EsperaForm(request.POST)
+		if form.is_valid():
+			participante = form.save(commit=False)
+			participante.email = email
+			participante.save()
+			return redirect('gracias_espera', permanent=True )
+	else:
+		form = EsperaForm()
+
+	return render(request, 'asistentes/formulario_espera.html', {'form': form})

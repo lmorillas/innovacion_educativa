@@ -1,5 +1,5 @@
 from django import forms
-from .models import UsuarioTalleres
+from .models import Participante, ListaDeEspera
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout
@@ -8,12 +8,24 @@ from crispy_forms.layout import Submit, Button
 from crispy_forms.bootstrap import FormActions
 
 from home.models import Taller
-from asistentes.models import UsuarioTalleres, ListaDeEspera
+#from asistentes.models import UsuarioTalleres, ListaDeEspera, Participante
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 AFORO_MAXIMO = settings.AFORO_MAXIMO
 TALLER_MAXIMO = settings.TALLER_MAXIMO
 
+
+class EmailForm(forms.Form):
+	email = forms.EmailField(label=_('Tu email'), max_length=120, 
+		help_text=_('Introduzce tu email'))
+	helper = FormHelper()
+	helper.form_class = 'form-horizontal'
+	helper.label_class = 'col-md-2 col-xs-12'
+	helper.field_class = 'col-md-6 col-xs-12'
+	helper.add_input(Submit('submit', 'Solicitar participación'))
+
+'''
 class ListaDeEsperaForm(forms.ModelForm):
 	helper = FormHelper()
 	helper.form_class = 'form-horizontal'
@@ -23,10 +35,40 @@ class ListaDeEsperaForm(forms.ModelForm):
 
 	class Meta:
 	    model = ListaDeEspera
-	    
 	    exclude=['user']
+'''
+
+class AsistenteForm(forms.ModelForm):
+	helper = FormHelper()
+	helper.form_class = 'form-horizontal'
+	helper.label_class = 'col-md-2 col-xs-12'
+	helper.field_class = 'col-md-6 col-xs-12'
+	helper.add_input(Submit('submit', 'Confirmar solictud'))
+	class Meta:
+		model = Participante
+		exclude=['email', 'fecha_inscripcion']
+
+	def clean(self):
+		cleaned_data = super(AsistenteForm, self).clean()
+		   
+		if  Participante.objects.count() >= AFORO_MAXIMO: 
+			raise forms.ValidationError(
+	                    "Se ha completado el aforo, puedes apuntarte en la liststa de espera."
+	                )
+		return cleaned_data
+
+class EsperaForm(forms.ModelForm):
+	helper = FormHelper()
+	helper.form_class = 'form-horizontal'
+	helper.label_class = 'col-md-2 col-xs-12'
+	helper.field_class = 'col-md-6 col-xs-12'
+	helper.add_input(Submit('submit', 'Confirmar solictud'))
+	class Meta:
+		model = ListaDeEspera
+		exclude=['email', 'fecha_inscripcion']
 
 
+"""
 class TalleresForm(forms.ModelForm):
 	helper = FormHelper()
 	helper.form_class = 'form-horizontal'
@@ -131,3 +173,4 @@ helper.layout = Layout(
         )
     )
     '''
+"""

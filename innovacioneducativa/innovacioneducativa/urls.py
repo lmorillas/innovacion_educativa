@@ -20,11 +20,25 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+    url(r'^inscripcion/email$', asistentes_views.inscribeme, name="email_inscripcion"),
 
-    url(r'^inscripciones/activar$', asistentes_views.inscripcion, name="inscripcion"),
-    url(r'^inscripciones/gracias$', asistentes_views.gracias, name="gracias"),
-    url(r'^inscripciones/exportar$', asistentes_views.exportar_inscritos, name="exportarinscritos"),
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^inscripcion/completar/(?P<email>[\w.@+-]+)/(?P<token>[\w.:\-_=]+)/$',
+        asistentes_views.completar, name='completar_inscripcion'),
+    url(r'^inscripcion/error$',
+        asistentes_views.error, name='error_inscripcion'),
+    #url(r'^inscripciones/activar$', asistentes_views.inscripcion, name="inscripcion"),
+    url(r'^inscripcion/gracias$', asistentes_views.gracias, name="gracias"),
+    url(r'^inscripcion/confirmarcorreo$', asistentes_views.gracias_solicitud, name="gracias_solicitud"),
+    
+
+    url(r'^espera/email$', asistentes_views.inscribeme_lista_espera, 
+        name="email_inscripcion_espera"),
+    url(r'^espera/completar/(?P<email>[\w.@+-]+)/(?P<token>[\w.:\-_=]+)/$',
+        asistentes_views.completar_lista_espera, name='completar_inscripcion_espera'),
+    url(r'^espera/gracias$', asistentes_views.gracias_espera, name="gracias_espera"),
+    url(r'^espera/confirmarcorreo$', asistentes_views.gracias_solicitud_espera, name="gracias_solicitud_espera"),
+    url(r'^inscripcion/exportar$', asistentes_views.exportar_inscritos, name="exportarinscritos"),
+    #url(r'^accounts/', include('registration.backends.default.urls')),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
