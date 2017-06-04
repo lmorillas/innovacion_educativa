@@ -425,6 +425,18 @@ button.navbar-toggle {
   }
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: $color1;
+  border-color: $color1;
+  &:hover, &:focus, &:active {
+  color: $gris;
+  background-color: $color1 !important;
+  border-color: $color5 !important;
+  }
+}
+
+
 #footer{
   background-color: $color4;
 }
