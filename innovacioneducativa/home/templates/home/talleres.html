@@ -14,7 +14,11 @@
                 <div class="col-md-4 col-xs-12 taller">
                 <div class="horario taller">
                 <div class="titulo">
+                {%if taller.nombre_rico %}
+                <h3>{{taller.nombre_rico | richtext }}
+                {% else %}
                     <h3>{{ taller.nombre }} </h3>
+                {% endif %}
                     </div>
                     <div class="contenido">
                     <strong>{{ taller.coordinador | richtext }}</strong>

@@ -190,6 +190,8 @@ class Taller(Orderable):
     
     page = ParentalKey('Talleres', related_name='talleres')
     nombre = models.CharField("Nombre del taller", max_length=255)
+    nombre_rico = RichTextField('Nombre del taller (decorado)', 
+        max_length=255, blank=True)
     imagen = models.CharField("Imagen", max_length=255, blank=True, null=True)
     coordinador = RichTextField(blank=True)
     biografia = RichTextField(blank=True)
@@ -198,6 +200,7 @@ class Taller(Orderable):
 
     panels = [
         FieldPanel('nombre'),
+        FieldPanel('nombre_rico'),
         FieldPanel('imagen'),
         FieldPanel('coordinador'),
         FieldPanel('descripcion'),
