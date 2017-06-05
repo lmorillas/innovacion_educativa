@@ -1,0 +1,66 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
+
+<div class="stream-field">
+
+    {% for child in content %}
+        
+        {% if child.block_type == 'heading_block' %}
+        
+        {% if child.value.nivel == 'h2' %}
+        <h2>{{ child.value.encabezado }}</h2>
+
+    {% elif child.value.nivel == 'h3' %}
+        <h3>{{ child.value.encabezado }}</h3>
+
+    {% elif child.value.nivel == 'h4' %}
+        <h4>{{ child.value.encabezado}}</h4>
+
+{% endif %}
+
+        {% elif child.block_type == 'intro' %}
+            <div class="intro">{{ child }}</div>
+        {% elif child.block_type == 'aligned_html' %}
+            {% if child.value.alignment == 'normal' %}
+                {{ child.value.bound_blocks.html.render }}
+            {% else %}
+                {{ child.value.bound_blocks.html.render }}
+            {% endif %}
+        {% elif child.block_type == 'block_quote' %}
+            <blockquote>
+                {{ child.value.texto }}
+                {% if child.value.nombre_autor %}<span>- {{ child.value.nombre_autor }}</span>{% endif %}
+            </blockquote>
+        {% elif child.block_type == 'paragraph_block' %}
+            <div class="{{child.value.clase}}">
+            {{ child.value.texto | richtext}}
+            </div>
+        {% elif child.block_type == 'image_block' %}
+            <div class="img-wrapper {{ child.value.alignment }}">
+                {% if child.value.alignment == "left" or child.value.alignment == "right" %}
+                    {% image child.value.image width-300 as theimage %}
+                {% else %}
+                    {% image child.value.image width-1280 as theimage %}
+                {% endif %}
+
+                <img src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" />
+
+                {% if child.value.caption %}
+                    <div class="caption">
+                        {{ child.value.caption }}
+                    </div>
+                {% endif %}
+                {% if child.value.attribution %}
+                    <div class="attribution">
+                        {{ child.value.attribution }}
+                    </div>
+                {% endif %}
+            </div>
+
+        {% elif child.block_type == 'embed_block' %}
+             {% embed child.value.url %}
+
+        {% else %}
+            {{ child.value }}
+        {% endif %}
+    {% endfor %}
+</div>
