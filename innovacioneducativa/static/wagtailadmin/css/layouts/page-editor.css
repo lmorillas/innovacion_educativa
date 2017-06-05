@@ -478,8 +478,7 @@ body.ready .stream-menu button {
 }
 
 .page-editor .breadcrumb {
-  margin-top: -1.2em;
-  margin-bottom: 2em;
+  margin: -1.2em 0 2em;
 }
 
 .page-editor .modal .breadcrumb {
@@ -497,6 +496,17 @@ body.ready .stream-menu button {
 
 .page-editor .modal .breadcrumb .home {
   padding-left: 0;
+}
+
+.page-editor .header-title {
+  padding-left: 3.1em;
+}
+
+@media screen and (max-width: 50em) {
+  .page-editor .header-title {
+    padding-left: 0;
+    margin-left: -28px;
+  }
 }
 
 .object {
@@ -815,6 +825,16 @@ footer .preview button,
 footer .preview .button {
   background-color: gray;
   border-color: gray;
+}
+
+@media screen and (max-width: 50em) {
+  footer .preview button,
+  footer .preview .button {
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 3em;
+  }
 }
 
 footer .preview button:hover,

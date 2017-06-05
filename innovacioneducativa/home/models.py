@@ -10,10 +10,12 @@ from wagtail.wagtailcore.models import Page, Orderable
 
 from django.db import models
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, \
+    InlinePanel, PageChooserPanel, MultiFieldPanel
 from wagtail.wagtailcore.blocks import RawHTMLBlock, RichTextBlock, StreamBlock, CharBlock
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.fields import ParentalKey
@@ -45,13 +47,13 @@ class HTMLPage(Page):
 
 
 class HomePage(Page):
-    imagen_principal = models.ForeignKey(
-        "wagtailimages.Image",
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name="+"
-    )
+    #imagen_principal = models.ForeignKey(
+    #    "wagtailimages.Image",
+    #    blank=True,
+    #    null=True,
+    #    on_delete=models.SET_NULL,
+    #    related_name="+"
+    #)
     imagen_consejera = models.ForeignKey(
         "wagtailimages.Image",
         blank=True,
@@ -73,7 +75,8 @@ class HomePage(Page):
         FieldPanel('titulo'),
         FieldPanel('lema'),
         FieldPanel('subtitulo'),
-        ImageChooserPanel("imagen_principal"),
+        InlinePanel('carousel_items', label="Carousel items"),
+        #ImageChooserPanel("imagen_principal"),
         StreamFieldPanel("presentacion"),
         StreamFieldPanel("objetivos"),
         ImageChooserPanel("imagen_consejera"),
@@ -426,3 +429,61 @@ class PaginaEstandar(Page):
 
 
 
+
+class LinkFields(models.Model):
+    link_external = models.URLField("External link", blank=True)
+    link_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+    link_document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+
+    @property
+    def link(self):
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_document:
+            return self.link_document.url
+        else:
+            return self.link_external
+
+    panels = [
+        FieldPanel('link_external'),
+        PageChooserPanel('link_page'),
+        DocumentChooserPanel('link_document'),
+    ]
+
+    class Meta:
+        abstract = True
+
+class CarouselItem(LinkFields):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    embed_url = models.URLField("Embed URL", blank=True)
+    caption = models.CharField(max_length=255, blank=True)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('embed_url'),
+        FieldPanel('caption'),
+        MultiFieldPanel(LinkFields.panels, "Link"),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class HomePageCarouselItem(Orderable, CarouselItem):
+    page = ParentalKey('HomePage', related_name='carousel_items')

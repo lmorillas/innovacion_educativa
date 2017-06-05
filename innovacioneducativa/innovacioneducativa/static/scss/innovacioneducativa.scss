@@ -444,3 +444,45 @@ button.navbar-toggle {
 a {
   color: $color1;
 }
+
+.carousel {
+    margin-bottom: 14px;
+    .carousel-caption {
+      top: 15%;
+      h3, a, p {
+      font-family: "Open Sans";
+      }
+      h3 {    
+        color: white;
+        font-size: 28px;
+        text-transform: uppercase;
+        //background-color: transparentize($color1, 0.4);
+        padding-top: 0;
+
+      }
+      h3.principal {    
+        font-size: 37px;
+        
+        //background-color: transparentize($color1, 0.4);
+        padding-top: 0;
+      }
+        .btn {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding: 10px 30px;
+            border-radius: 0px;
+            background-color: white;
+            color: $color1;
+        }
+      p{
+
+      font-size: 18px;
+      padding-top: 20px;
+      font-weight: lighter;
+      }
+      a {
+        text-transform: uppercase;
+
+      }
+    }
+}

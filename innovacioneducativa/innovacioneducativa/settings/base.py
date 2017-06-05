@@ -167,7 +167,7 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
-COMPRESS_OFFLINE = True
+#COMPRESS_OFFLINE = True
 #
 BASE_URL_PATH = '/'
 
