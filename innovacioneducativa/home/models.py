@@ -66,6 +66,7 @@ class HomePage(Page):
     lema =  models.CharField(max_length=240, blank = True) 
     presentacion = StreamField(HTMLBlock(), blank=True)
     objetivos = StreamField(HTMLBlock(), blank=True)
+    titulo_consejera = models.CharField(max_length=240, blank = True) 
     saludo_consejera = StreamField(HTMLBlock(), blank=True)
 
     content_panels = Page.content_panels + [
@@ -76,6 +77,7 @@ class HomePage(Page):
         StreamFieldPanel("presentacion"),
         StreamFieldPanel("objetivos"),
         ImageChooserPanel("imagen_consejera"),
+        FieldPanel('titulo_consejera'),
         StreamFieldPanel("saludo_consejera"),
     ]
 
