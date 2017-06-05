@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static congresotags %}
+
+{% block extra_head %}
+
+<style>
+.contenido {
+    font-size: 14px;
+}
+.presentacion {
+    padding-top: 40px;
+
+}
+
+</style>
+{% endblock %}
+
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block body %}
+    
+    <div class="container contenido">
+
+    <h1>{{ page.title }}</h1>
+
+     {% if self.introduccion %}
+        <div class="introduccion">
+            {{ self.introduccion }}
+        </div>
+    {% endif %}
+
+    {% if self.body %}
+        <div class="">
+            {% include "includes/streamfield.html" with content=self.body %}
+        </div>
+    {% endif %}
+
+    </div>
+    
+    
+{% endblock %}
