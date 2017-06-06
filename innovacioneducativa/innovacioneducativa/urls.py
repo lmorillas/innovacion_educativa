@@ -77,5 +77,5 @@ from django.conf.urls import (
 
 #handler400 = 'home.views.bad_request'
 #handler403 = 'home.views.permission_denied'
-handler404 = 'home.views.page_not_found'
+#handler404 = 'home.views.page_not_found'
 #handler500 = 'home.views.server_error'
