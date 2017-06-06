@@ -1,7 +1,7 @@
-Hola, tú (o alguien usando tu dirección de correo) ha solicitado registrarse en el I Congreso Internacional de Innovación Educativa. Si no has sido tú, ignora este correo.
+Bienvenida/o al I Congreso Internacional de Innovación Educativa.
 
+Hemos recibido una solicitud de participación desde esta dirección de correo. Si es así, para completar el registro haga clic en el siguiente enlace. Este enlace solo estará activo durante una hora.
 
-Para completar el registro haz clic en el siguente enlace. Este enlace sólo estará activo durante una hora.
 
 {{ request.scheme }}://{{ request.get_host }}{% url 'completar_inscripcion' email token %}
 
